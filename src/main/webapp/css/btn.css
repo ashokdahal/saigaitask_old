@@ -1,0 +1,99 @@
+/* Copyright (c) 2013 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+.btn { display: block; position: relative; background: #888; padding: 5px; float: left; color: #fff; text-decoration: none; cursor: pointer; width:120px; text-align:center; font-weight:bold; -moz-box-sizing: content-box;}
+.btn * { font-size: 14px; font-style: normal; background-image: url("../images/button/btn2.png"); background-repeat: no-repeat; display: block; position: relative; }
+.btn i { background-position: top left; position: absolute; margin-bottom: -5px;  top: 0; left: 0; width: 5px; height: 5px; }
+.btn span { background-position: bottom left; left: -5px; padding: 0 0 5px 10px; margin-bottom: -5px; }
+.btn span i { background-position: bottom right; margin-bottom: 0; position: absolute; left: 100%; width: 10px; height: 100%; top: 0; }
+.btn span span { background-position: top right; position: absolute; right: -10px; margin-left: 10px; top: -5px; height: 0; }
+
+* html .btn span,
+* html .btn i { float: left; width: auto; background-image: none; cursor: pointer; }
+
+.btn:hover { background-color: #666; }
+.btn.blue { background: #26b; }
+.btn.botton { background: #26b; -webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; border-radius:5px;}
+.btn.botton_2 { background: #26b;  width:50px; height:28px; font-size: 12px; text-align:center; padding: 2.5px;-webkit-border-radius:5px; -moz-border-radius:5px; -ms-border-radius:5px; -o-border-radius:5px; border-radius:5px;}
+.btn.lgray { background: #ccc; cursor: default; }
+.btn:active { background-color: #444; }
+.btn.lgray:active { background-color: #ccc; }
+.btn[class] { background-image: url("../images/button/shade.png"); background-position: bottom; }
+
+* html .btn { border: 3px double #aaa; }
+* html .btn.blue { border-color: #26b; }
+* html .btn:hover { border-color: #a00; }
+
+.btn { margin-right:5px; }
+
+
+/** for small*/
+
+.btn_small { display: block; position: relative; background: #888; padding: 2.5px; float: left; color: #fff; text-decoration: none; cursor: pointer; width:40px; text-align:center; font-weight:bold; -moz-box-sizing: content-box;}
+.btn_small *{ font-size: 8px; font-style: normal; background-image: url("../images/button/btn2.png"); background-repeat: no-repeat; display: block; position: relative; }
+.btn_small i { background-position: top left; position: absolute; margin-bottom: -2.5px;  top: 0; left: 0; width: 2.5px; height: 2.5px; }
+.btn_small span { background-position: bottom left; left: -2.5px; padding: 0 0 2.5px 5px; margin-bottom: -2.5px; }
+.btn_small span i { background-position: bottom right; margin-bottom: 0; position: absolute; left: 100%; width: 5px; height: 100%; top: 0; }
+.btn_small span span { background-position: top right; position: absolute; right: -5px; margin-left: 5px; top: -2.5px; height: 0; }
+
+.btn_small:hover { background-color: #666; }
+.btn_small.blue { background: #26b; }
+.btn_small.lgray { background: #ccc; cursor: default; }
+.btn_small:active { background-color: #444; }
+.btn_small.lgray:active { background-color: #ccc; }
+.btn_small[class] { background-image: url("../images/button/shade.png"); background-position: bottom; }
+
+.btn_small { margin-right:5px; }
+
+
+/** for btn_icon*/
+.btn_icon { display: block; position: relative; float: left; color: black; text-decoration: none; cursor: pointer; width:25px; text-align:center; font-weight:bold; -moz-box-sizing: content-box;}
+.btn_icon * { font-size: 12px; font-style: normal; display: block; position: relative; }
+.btn_icon i { background-position: top left; position: absolute; margin-bottom: -5px;  top: 0; left: 0; width: 5px; height: 5px; }
+.btn_icon span { background-position: bottom left; left: -5px; padding: 0 0 5px 10px; margin-bottom: -5px; }
+.btn_icon span i { background-position: bottom right; margin-bottom: 0; position: absolute; left: 100%; width: 10px; height: 100%; top: 0; }
+.btn_icon span span { background-position: top right; position: absolute; right: -10px; margin-left: 10px; top: -5px; height: 0; }
+
+* html .btn_icon span,
+* html .btn_icon i { float: left; width: auto; background-image: none; cursor: pointer; }
+
+.btn_icon:hover { background-color: #666; }
+.btn_icon.lgray { cursor: default; }
+.btn_icon:active { background-color: #444; }
+.btn_icon.lgray:active { background-color: #ccc; }
+
+* html .btn_icon { border: 3px double #aaa; }
+* html .btn_icon.blue { border-color: #26b; }
+* html .btn_icon:hover { border-color: #a00; }
+
+.btn_icon { margin-right:5px; }
+
+/** for small_icon*/
+
+.btn_small_icon { display: block; position: relative; background: #888; padding: 2.5px; float: left; color: #fff; text-decoration: none; cursor: pointer; width:25px; text-align:center; font-weight:bold; -moz-box-sizing: content-box;;}
+.btn_small_icon *{ font-size: 8px; font-style: normal; background-image: url("../images/button/btn2.png"); background-repeat: no-repeat; display: block; position: relative; }
+.btn_small_icon i { background-position: top left; position: absolute; margin-bottom: -2.5px;  top: 0; left: 0; width: 2.5px; height: 2.5px; }
+.btn_small_icon span { background-position: bottom left; left: -2.5px; padding: 0 0 2.5px 5px; margin-bottom: -2.5px; }
+.btn_small_icon span i { background-position: bottom right; margin-bottom: 0; position: absolute; left: 100%; width: 5px; height: 100%; top: 0; }
+.btn_small_icon span span { background-position: top right; position: absolute; right: -5px; margin-left: 5px; top: -2.5px; height: 0; }
+
+.btn_small_icon:hover { background-color: #666; }
+.btn_small_icon.blue { background: #26b; }
+.btn_small_icon.lgray { background: #ccc; cursor: default; }
+.btn_small_icon:active { background-color: #444; }
+.btn_small_icon.lgray:active { background-color: #ccc; }
+.btn_small_icon[class] { background-image: url("../images/button/shade.png"); background-position: bottom; }
+.btn_small_icon { margin-right:2px; }
+
+.buttons li{
+    float:right;
+    overflow:hidden;
+}
+
+
+.toolbox_box{ float:left; height:40px; text-align:center;}
+.toolbox_box span { font-size:13px; letter-spacing:1px; line-height:130%; }
+.toolbox_box a { font-size:16px;}
+

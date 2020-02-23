@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://xml.kishou.go.jp/jmaxml1/" xmlns:jmx="http://xml.kishou.go.jp/jmaxml1/">
+  <Control>
+    <Title>ここはタイトル(Control)</Title>
+    <DateTime>ここは発表日時</DateTime>
+  </Control>
+  <Head xmlns="http://xml.kishou.go.jp/jmaxml1/informationBasis1/">
+    <Title>ここはタイトル(Head)</Title>
+    <Headline>
+      <Text>ここは概況</Text>
+      <Information type="記録的短時間大雨情報（発表細分）">
+        <Item>
+          <Kind>
+            <Name>記録的短時間大雨情報</Name>
+            <Code>1</Code>
+            <Condition>発表</Condition>
+          </Kind>
+          <Areas codeType="気象情報／府県予報区・細分区域等">
+            <Area>
+              <Name>大阪府</Name>
+              <Code>270000</Code>
+            </Area>
+          </Areas>
+        </Item>
+      </Information>
+    </Headline>
+  </Head>
+  <Body xmlns="http://xml.kishou.go.jp/jmaxml1/body/meteorology1/">
+    <Warning type="記録的短時間大雨情報（発表細分）">
+      <Item>
+        <Kind>
+          <Name>記録的短時間大雨情報</Name>
+          <Code>1</Code>
+          <Status>発表</Status>
+        </Kind>
+        <Area>
+          <Name>大阪府</Name>
+          <Code>270000</Code>
+        </Area>
+      </Item>
+    </Warning>
+  </Body>
+</Report>

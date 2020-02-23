@@ -1,0 +1,59 @@
+#wrapper {
+    position: absolute;
+    top:0px;
+    bottom:0px;
+}
+body {
+	margin: 0 auto;
+	/*font-size: 11px;*/
+}
+header {
+	padding: 0;
+	margin-top:0px;
+	margin-bottom: 0px;
+}
+h1 {
+	font-size:16pt;
+	margin-top:0px;
+	margin-bottom: 0px;
+}
+
+h2 {
+	margin-top:0px;
+	margin-bottom: 0px;
+}
+
+#h_main {
+	width: auto;
+	margin-top:0px;
+	margin-bottom: 0px;
+}
+hr {
+	width: auto;
+	margin-top:0px;
+	margin-bottom: 0px;
+}
+.ui-jqgrid .loading{
+    background-image: url(../admin-js/css/images/ajax-loader3.gif);
+    background-color: rgba(255,255,255,0);;
+    background-position-x: 50%;
+    background-position-y: 50%;
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 20px;
+    border: 0px;;
+}
+
+/*1çsÇ®Ç´Ç…îwåiêFÇÇ©Ç¶ÇÈCSS*/
+.myodd {
+    border: 1px solid #a6c9e2;
+    background-color: #f5f5f5  ;
+    color: #222222;
+}
+
+#h_main hr{
+	margin:2px 0px 3px 0px;
+	color:#C5DBEC;
+	background-color:#C5DBEC;
+	border:none;
+}

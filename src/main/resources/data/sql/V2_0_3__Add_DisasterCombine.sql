@@ -1,0 +1,22 @@
+/* Copyright (c) 2013 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+
+alter table localgov_info add column disastercombined boolean default false;
+COMMENT ON COLUMN localgov_info.disastercombined IS '災害種別統合化済';
+
+
+--alter table track_data drop column disasterid;
+
+--alter table demo_info drop column disasterid;
+
+--alter table judgeman_info drop column disasterid;
+
+--alter table stationclass_info drop column disasterid;
+
+--alter table trainingplan_data drop column disasterid;
+
+--alter table login_data drop column disasterid;
+

@@ -1,0 +1,3 @@
+OpenLayersの拡張ライブラリは、
+OpenLayers/extension
+のここに置くとする。

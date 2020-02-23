@@ -1,0 +1,160 @@
+/* Copyright (c) 2013 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+/* --Reset-- */
+a img, img {
+border:0;
+}
+
+blockquote, dd, div, dl, dt,
+h1, h2, h3, h4, h5, h6,
+li, ol, p, pre, span, td, th, ul {
+margin:0;
+padding:0;
+}
+
+abbr, acronym {
+border:0;
+}
+
+address, caption, cite, code, dfn, em, th, var {
+font-style:normal;
+font-weight:normal;
+}
+
+caption, th {
+text-align:left;
+}
+
+code, kbd, pre, samp, tt {
+font-family:monospace;
+line-height:100%;
+}
+
+    /* for IE7 */
+    *+html code, kbd, pre, samp, tt {
+    font-size:108%;
+    }
+
+h1, h2, h3, h4, h5, h6 {
+font-size:100%;
+font-weight:normal;
+}
+ul li {
+	margin-left: 15px;
+}
+
+q:before, q:after {
+content:'';
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	word-break: narmal;
+}
+
+html, body, #wrapper {
+	height: 100%;
+}
+
+body {
+	color: #333;
+	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Verdana, "ＭＳ Ｐゴシック", sans-serif;
+	font-size: 14px;
+	*font-size:small;
+    *font:x-small;
+	line-height: 1.4;
+}
+
+h4, h5, h6 {
+font-size:100%;
+margin: 10px 0 5px;
+}
+
+/* clearfix */
+.clearfix:after {
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix {
+	display: inline-block;
+}
+
+
+h1 {
+	font-size:16px;
+	font-weight: bold;
+	border-left: 5px solid #C30;
+	border-bottom: 1px solid #C30;
+	padding-left:5px;
+	margin-bottom:10px;
+}
+h2 {
+	font-weight: bold;
+	background-color:#eaeaea;
+	padding: 2px 5px;
+	margin:15px 2px 10px;
+}
+
+
+/* 全体
+------------------------------------------------*/
+#wrapper {
+	padding:20px;
+	margin: 0 auto;
+}
+#contents_setup {
+	width: 600px;
+}
+
+
+/* table */
+table.form {
+	width: 100%;
+	border-top:1px solid #999;
+	border-left:1px solid #999;
+	border-collapse:collapse;
+	margin:0 auto 15px;
+
+}
+table.form th {
+	padding: 4px;
+	vertical-align: top;
+	background-color: #F7E8E8;
+	border-right:1px solid #999;
+    border-bottom:1px solid #999;
+	text-align:left;
+	font-weight: bold;
+	text-indent: 0;
+	white-space:nowrap;
+}
+table.form td {
+	padding:3px;
+	vertical-align: top;
+	border-right:1px solid #999;
+   	border-bottom:1px solid #999;
+	text-align: left;
+	vertical-align: middle;
+	text-indent: 0;
+	white-space:nowrap;
+}
+.odd{background: #ddd }
+
+
+/* 汎用
+------------------------------------------------*/
+.maL2 {margin-left: 2px;}
+.maL5 {margin-left: 5px;}
+.maL10 {margin-left: 10px;}
+.maT5 {margin-top: 5px;}
+.txtC {text-align: center;}
+
+body{
+	background-Color: white;
+}

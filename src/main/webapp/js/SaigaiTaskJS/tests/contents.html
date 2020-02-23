@@ -1,0 +1,685 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel='stylesheet' type='text/css' href="../css/map.css"/>
+		<script type="text/javascript" src="/SaigaiTask/assets2/js/jquery.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/js/OpenLayers/OpenLayers.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/js/OpenLayers/lib/deprecated.js"></script>
+		<!-- 電子国土 -->
+		<script type="text/javascript" src="http://portal.cyberjapan.jp/sys/v4/webtis/webtis_v4.js" charset="UTF-8"></script>
+		<link rel="stylesheet" type="text/css" href="http://portal.cyberjapan.jp/sys/v4/css/webtis.css">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="STLoader.js"></script>
+	</head>
+	<body>
+		<div id="map"></div>
+	</body>
+	<script type="text/javascript">
+		var map = new Map("map", {
+			contextPath: "/SaigaiTask",
+			epsg: 4326
+		});
+
+		map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+		// http://track.mapservice.jp/map/map/?cid=1&mid=19
+		var ecommap = {
+			"overlayLayers" : [],
+			"referenceLayers" : [ {
+				"scale" : 0,
+				"visibility" : false,
+				"status" : 1,
+				"wmsLegendURL" : "http://hazardmap.service-section.com/geoserver/wms?",
+				"ownerId" : 1,
+				"wmsFormat" : "image/png",
+				"type" : 59,
+				"layerId" : "ref50",
+				"childLayerInfos" : [ {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "第１次避難所・第２次避難所",
+					"featuretypeId" : "hazardmap:h15204_004_3",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_0",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "その他避難所",
+					"featuretypeId" : "hazardmap:h15204_004_1",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_1",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "公共機関",
+					"featuretypeId" : "hazardmap:h15204_004_2",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_2",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "土石流_ライン",
+					"featuretypeId" : "hazardmap:h15204_004_5",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_3",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "上流部_土石流ライン",
+					"featuretypeId" : "hazardmap:h15204_004_4",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_4",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "土石流危険区域",
+					"featuretypeId" : "hazardmap:h15204_004_13",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_5",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "上流部_土石流危険区域",
+					"featuretypeId" : "hazardmap:h15204_004_9",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_6",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "がけ崩れ危険区域",
+					"featuretypeId" : "hazardmap:h15204_004_6",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_7",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "上流部_がけ崩れ危険区域",
+					"featuretypeId" : "hazardmap:h15204_004_7",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_8",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "地すべり危険区域",
+					"featuretypeId" : "hazardmap:h15204_004_14",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_9",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "上流部_地すべり危険区域",
+					"featuretypeId" : "hazardmap:h15204_004_10",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_10",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "山崩れ危険区域",
+					"featuretypeId" : "hazardmap:h15204_004_15",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_11",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "上流部_山崩れ危険区域",
+					"featuretypeId" : "hazardmap:h15204_004_11",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_12",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "三条市でのH16.7.13洪水による五十嵐川浸水範囲",
+					"featuretypeId" : "hazardmap:h15204_004_12",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_13",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "三条市でのH16.7.13洪水による五十嵐川浸水範囲（上流部）",
+					"featuretypeId" : "hazardmap:h15204_004_8",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_14",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "浸水深2m以上5m未満",
+					"featuretypeId" : "hazardmap:h15204_004_19",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_15",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "浸水深1m以上2m未満",
+					"featuretypeId" : "hazardmap:h15204_004_18",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_16",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "浸水深0.5m以上1m未満",
+					"featuretypeId" : "hazardmap:h15204_004_16",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_17",
+					"ownerMapId" : 20
+				}, {
+					"AttrInfo" : [],
+					"scale" : 0,
+					"status" : 1,
+					"ownerId" : 1,
+					"description" : "",
+					"name" : "浸水深0.5m未満",
+					"featuretypeId" : "hazardmap:h15204_004_17",
+					"maxScale" : 0,
+					"type" : 51,
+					"layerId" : "ref50_18",
+					"ownerMapId" : 20
+				} ],
+				"description" : "",
+				"name" : "三条市災害ハザードマップ（五十嵐川洪水・土砂災害）",
+				"maxScale" : 0,
+				"wmsURL" : "http://hazardmap.service-section.com/geoserver/wms?",
+				"ownerMapId" : 20,
+				"attribution" : ""
+			} ],
+			"layerAuthKeyMap" : {
+				"c32" : "FgPjaWGF",
+				"c38" : "fhFOQC0"
+			},
+			"contentsLayers" : [ {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 2,
+				"description" : "避難所:1",
+				"name" : "避難所",
+				"geomType" : "POINT",
+				"maxScale" : 0,
+				"type" : 1,
+				"layerId" : "c32",
+				"ownerMapId" : 15
+			}, {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 2,
+				"description" : "避難地域:1",
+				"name" : "避難地域",
+				"geomType" : "MULTIPOLYGON",
+				"maxScale" : 0,
+				"type" : 1,
+				"layerId" : "c38",
+				"ownerMapId" : 18
+			} ],
+			"groupContentsLayers" : [],
+			"baseLayers" : [ {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "GeoSpace",
+				"wmsFormat" : "image/png",
+				"type" : 1150,
+				"layerId" : "wms35",
+				"name" : "GeoSpace",
+				"maxScale" : 0,
+				"wmsURL" : "http://geospace.service-section.com/geowebcache/service/wms?SERVICE=WMS&",
+				"ownerMapId" : 0,
+				"attribution" : ""
+			} ],
+			"mapInfo" : {
+				"groupId" : 5,
+				"mapId" : 19,
+				"title" : "三条市 避難所マップ",
+				"status" : 1,
+				"description" : "災害対応システム",
+				"userId" : 1,
+				"date" : 1341228530110,
+				"type" : 0,
+				"reload" : 0,
+				"MapLayerInfo" : [ {
+					"scale" : 0,
+					"visible" : true,
+					"attrNameId" : "attr0",
+					"opacity" : 1,
+					"closed" : false,
+					"layerName" : "避難所",
+					"searchType" : 255,
+					"type" : 1,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "c32"
+				}, {
+					"scale" : 0,
+					"visible" : true,
+					"opacity" : 1,
+					"closed" : false,
+					"layerName" : "避難地域",
+					"searchType" : 255,
+					"type" : 1,
+					"maxScale" : 0,
+					"layerId" : "c38"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"closed" : false,
+					"layerName" : "三条市災害ハザードマップ（五十嵐川洪水・土砂災害）",
+					"searchType" : 255,
+					"type" : 59,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "第１次避難所・第２次避難所",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_0"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "その他避難所",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_1"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "公共機関",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_2"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "土石流_ライン",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_3"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "上流部_土石流ライン",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_4"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "土石流危険区域",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_5"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "上流部_土石流危険区域",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_6"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "がけ崩れ危険区域",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_7"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "上流部_がけ崩れ危険区域",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_8"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "地すべり危険区域",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_9"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "上流部_地すべり危険区域",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_10"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "山崩れ危険区域",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_11"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "上流部_山崩れ危険区域",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_12"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "三条市でのH16.7.13洪水による五十嵐川浸水範囲",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_13"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "三条市でのH16.7.13洪水による五十嵐川浸水範囲（上流部）",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_14"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "浸水深2m以上5m未満",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_15"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "浸水深1m以上2m未満",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_16"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "浸水深0.5m以上1m未満",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_17"
+				}, {
+					"scale" : 0,
+					"visible" : false,
+					"opacity" : 1,
+					"parent" : "ref50",
+					"closed" : false,
+					"layerName" : "浸水深0.5m未満",
+					"searchType" : 255,
+					"type" : 51,
+					"maxScale" : 0,
+					"reload" : "{\"sec\":0}",
+					"layerId" : "ref50_18"
+				}, {
+					"scale" : 0,
+					"visible" : true,
+					"opacity" : 1,
+					"closed" : false,
+					"layerName" : "GeoSpace",
+					"searchType" : 255,
+					"type" : 1150,
+					"maxScale" : 0,
+					"layerId" : "wms35"
+				} ],
+				"communityId" : 1
+			},
+			"ecommapURL" : "http://track.mapservice.jp/map",
+			"layoutInfo" : {
+				"mapExtent" : [ 138.890853881836, 37.4946975708008,
+						139.112915039062, 37.7167587280273 ],
+				"subMaps" : "g",
+				"visibleSubMap" : "",
+				"mapResolution" : 0
+			}
+		};
+		map.ecommaps.push(ecommap);
+		var ecommapIdx = map.ecommaps.length-1;
+		ecommap.ecommapIdx = ecommapIdx;
+		// base layer
+		map.saigaitaskServer = "";
+		var ecomServer = "track.mapservice.jp";
+		var appkey = "90d4e5392ed39fa07bd37329ac9866f1";
+		var authId = "admin";
+		var cid = 1;
+		var mid = 19;
+		map.url.wmsAuthURL = "http://"+ecomServer+"/map/api/wms/"+cid+"/"+mid+"?appkey="+appkey+"&authId="+authId;
+			for(var idx in ecommap.baseLayers) {
+			map.addBaseLayer(ecommap.baseLayers[idx]);
+		}
+		// contents layer
+		var contentsLayer = map.addContentsLayer(ecommap);
+		// cql_filter
+		var attrInfos = [[{
+			attrId: "attr0",
+			name: "名称",
+			type: "text"
+		}, {
+			attrId: "attr1",
+			name: "住所",
+			type: "text"
+		}, {
+			attrId: "attr2",
+			name: "TEL",
+			type: "text"
+		}, {
+			attrId: "attr3",
+			name: "FAX",
+			type: "text"
+		}, {
+			attrId: "attr4",
+			name: "地区",
+			type: "text"
+		}, {
+			attrId: "attr5",
+			name: "開設状況",
+			type: "select",
+			options: ["使用不可","未開設","開設指示済","開設済"]
+		}, {
+			attrId: "attr6",
+			name: "収容人数",
+			type: "int"
+		}, {
+			attrId: "attr7",
+			name: "種別",
+			type: "text"
+		}, {
+			attrId: "attr8",
+			name: "建物構造",
+			type: "text"
+		}], [
+		]];
+
+		var shelterLayerCQLFilter = "INCLUDE";
+		// 文字列フィルタ
+		shelterLayerCQLFilter = "attr5='開設済'";
+
+		var cqlFilters = ["INCLUDE", shelterLayerCQLFilter];
+		contentsLayer.mergeNewParams({
+			cql_filter: cqlFilters.join(";")
+		});
+
+
+		// 表示位置を指定
+		map = map.map;
+		var lon = 138.98454;
+		var lat = 37.61096;
+		var zoom = 12;
+		map.setCenter(new OpenLayers.LonLat(lon, lat).transform(new OpenLayers.Projection("EPSG:4326"),map.getProjectionObject()), zoom);
+	</script>
+</html>

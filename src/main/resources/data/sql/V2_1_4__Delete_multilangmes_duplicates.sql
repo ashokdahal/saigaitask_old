@@ -1,0 +1,2 @@
+WITH duplicates AS (select * from (select multilanginfoid, messageid, count(*) FROM multilangmes_info group by multilanginfoid, messageid) a where count>1), deletes as (SELECT * from multilangmes_info a inner join duplicates on duplicates.multilanginfoid=a.multilanginfoid and duplicates.messageid=a.messageid where a.id<>(select max(id) from multilangmes_info b where duplicates.multilanginfoid=b.multilanginfoid and duplicates.messageid=b.messageid))
+delete from multilangmes_info where id in (select id from deletes);

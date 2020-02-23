@@ -1,0 +1,207 @@
+/*
+*	GENERAL COSMETICS
+*/
+body {
+	font-family: Lucida Grande, Lucida Sans, Arial, Helvetica, sans-serif;
+	font-size: 100%;
+	background-color: #EEE;
+}
+h1 {
+	font-size: 2em;
+	font-weight: normal;
+	margin: 1em 0 0.75em;
+	page-break-after: avoid;
+}
+h2 {
+	color: navy;
+	font-size: 1.2em;
+	font-weight: bold;
+	margin: 1.25em 0 0.75em;
+	page-break-after: avoid;
+}
+h3 {
+	font-size: 1.2em;
+	font-weight: bold;
+	margin: 0 0 1ex;
+	white-space: nowrap;
+	page-break-after: avoid;
+}
+p {
+	margin: 1ex 0;
+}
+
+code {
+	font-size: 1.1em;
+	margin: 0;
+	}
+	pre {
+		margin: 1em 0 1em 1em;
+	}
+
+ul {
+	padding: 0;
+	padding-bottom: 20px; /* give whitespace at bottom for FF */
+	margin: 0;
+	list-style-type: square;
+	}
+	li {
+		padding: 0;
+		margin: 0;
+		margin: 0.5ex 0 0.5ex 1.2em;
+	}
+
+table {
+	border-color: #666;
+	}
+	th {
+		background-color: #EEE;
+		padding: 4px 7px 5px;
+		border-color: #666;
+		text-align: left;
+	}
+	td {
+		padding: 2px 7px 3px;
+		border-color: #666 #CCC;
+		vertical-align: top;
+	}
+
+
+/*
+*	COMMON LAYOUT PANE FORMATTING
+*/
+.pane ,				/* outer pane class */
+.ui-layout-pane {	/* inner pane class */
+	background-color: #FFF;
+	border: 1px solid #777;
+	padding: 0;/* alignment & padding is on the inner-divs */
+	overflow: auto; /* will be auto-set to 'hidden' for any pane with a 'scrolling content div' */
+}
+
+
+/*
+*	OUTER-LAYOUT PANE FORMATTING
+*/
+.pane-north ,
+.pane-south ,
+.pane-west ,
+.pane-east {
+	overflow:		auto;//hidden;
+}
+.pane-north {
+	border-bottom:	none;
+	}
+	.pane-north .content ,
+	.pane-south .content {
+		text-align: center;
+	}
+.pane-center {
+	/* show off the inner-layout inside the outer-center-pane*/
+	background-color: #F6F6F6;
+	padding: 15px; /* for outer layout */
+}
+
+/* inner divs inside Outer East/West panes */
+//.header { 
+//	background: #80ade5 url(../images/80ade5_40x100_textures_04_highlight_hard_100.png) 0 50% repeat-x;
+//	border-bottom: 1px solid #777;
+//	font-weight: bold;
+//	text-align: center;
+//	padding: 2px 0 4px;
+//	position: relative;
+//	overflow: hidden;
+//}
+//.content {
+//	padding:	10px;
+//	position:	relative;
+//	overflow:	auto;
+//}
+
+/*
+*	OUTER LAYOUT RESIZERS & TOGGLERS
+*/
+
+/* north-pane is not resizable */
+.resizer-south-dragging	{ background: #999 url(../admin-js/css/images/go-oc.png) repeat-x center; }	
+.resizer-west-dragging 	{ background: #999 url(../admin-js/css/images/go-oc.png) repeat-y center; }
+.resizer-east-dragging 	{ background: #999 url(../admin-js/css/images/go-oc.png) repeat-y center; }
+
+.resizer-west-open {
+	background-color: #999;
+	opacity: 0.1;
+	filter: alpha(opacity=10);
+}
+.resizer-dragging {
+	/* see draggable.opacity option
+	opacity: 0.5;
+	filter: alpha(opacity=50);
+	*/
+}
+.resizer-dragging-limit	{ background: #FF3300 !important; }
+
+/* IE6 * HACK - always show resizer graphics because IE6 cannot understand elem:hover */
+/** html .resizer-north		{ background: url(../img/resizable-n.gif) repeat-x center !important; } */
+* html .resizer-south		{ background: url(../img/resizable-s.gif) repeat-x center !important; }
+* html .resizer-west-open	{ background: url(../img/resizable-w.gif) repeat-y center !important; }
+* html .resizer-east-open	{ background: url(../img/resizable-e.gif) repeat-y center !important; }
+/** html .resizer-north , */
+* html .resizer-south ,
+* html .resizer-west-open ,
+* html .resizer-east-open {
+	opacity: 0.1 !important;
+	filter: alpha(opacity=10) !important;
+}*/
+
+/*
+*	SIMPLE TOGGLER BUTTONS (used on Outer Layout North/South only)
+*/
+
+.toggler-north-open ,
+.toggler-south-closed 		{ background: #999 url(../admin-js/css/images/go-oc.png) no-repeat center bottom; }
+.toggler-north-closed ,
+.toggler-south-open   		{ background: #999 url(../admin-js/css/images/go-oc.png) no-repeat center top; }
+
+/*
+*	extJS-STYLE RESIZER/SLIDER-BAR (CLOSED)
+*/
+.resizer-west-closed  {
+	background: #D1E6FC url(../images/D1E6FC_40x100_textures_10_dots_medium_90.png) 0 0 repeat;
+	border-top: 1px solid #777;
+	border-bottom: 1px solid #777;
+}
+.resizer-west-closed:hover  {
+	background: #D1E6FC;
+}
+
+/*
+ *	extJS-STYLE TOGGLE & PIN BUTTONS
+ *
+ *	these 'extra buttons' are INSIDE the east/west panes
+ */
+
+/* CUSTOM pin/close buttons */
+span.button-pin ,
+span.button-close {
+	position:	absolute;
+	top:		0;
+	width: 		20px;
+	height:		20px;
+	z-index:	2;
+	display:	block;
+	cursor: 	pointer;
+}
+span.button-close-west	{ left:	 0; }
+span.button-close-east	{ right: 0; }
+span.button-pin-west	{ right: 1px; }
+span.button-pin-east	{ left:	 1px; }
+
+/* CUSTOM pin-buttons */
+span.button-pin-up 		  		{ background: #999 url(../admin-js/css/images/go-oc.png) no-repeat center; }
+span.button-pin-down 	  		{ background: #999 url(../admin-js/css/images/go-oc.png) no-repeat center; }
+
+/* CUSTOM close-buttons */
+span.button-close-west			{ background: #999 url(../admin-js/css/images/go-oc.png) no-repeat center; }
+span.button-close-east			{ background: #999 url(../admin-js/css/images/go-oc.png) no-repeat center; }
+
+/* STANDARD toggler-buttons - when the east/west panes are 'closed' */
+.toggler-west-closed		{ background: #999 url(../admin-js/css/images/go-oc.png) no-repeat center; }
+.toggler-east-closed		{ background: #999 url(../admin-js/css/images/go-oc.png) no-repeat center; }

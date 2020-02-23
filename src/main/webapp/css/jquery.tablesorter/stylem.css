@@ -1,0 +1,91 @@
+/* tables */
+table.tablesorter {
+	font-family:arial;
+	background-color: #CDCDCD;
+	background-image: none;
+	margin:5px 0pt 5px;
+	font-size: 8pt;
+	//width: 100%;
+	width: 99%;
+	text-align: left;
+	border-collapse: separate;
+	border-spacing: 1pt;
+	empty-cells: show;
+}
+table.tablesorter thead tr th, table.tablesorter tfoot tr th {
+	//background-color: #e6EEEE;
+	background-color: #8dbdd8;
+	border: 1px solid #FFF;
+	font-size: 8pt;
+	//padding: 4px;
+	padding: 3px;
+	font-weight:bold;
+	text-align: center;
+}
+table.tablesorter thead tr .header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter thead tr .tablesorter-header {
+	background-image: url(bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter thead tr .sorter-false {
+	background-image: none;
+}
+table.tablesorter tr.gray td {
+	background: #aaaaaa url("ui-bg_diagonals-medium_20_bbbbbb_40x40.png") 50% 50% repeat;
+	//background-color: #cccccc;
+	color: #6d6d6d;
+}
+table.tablesorter tbody td {
+//	color: #3D3D3D;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+	text-align: center;
+}
+table.shortline tbody td {
+	max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+table.tablesorter thead th.highlight, table.tablesorter tbody td.highlight {
+	border: 1px #ff0000 solid;
+}
+table.tablesorter tbody tr.odd td {
+//	background-color:#F0F0F6;
+}
+table.tablesorter thead tr .headerSortUp {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .tablesorter-headerAsc  {
+	background-image: url(asc.gif);
+}
+table.tablesorter thead tr .headerSortDown {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .tablesorter-headerDesc {
+	background-image: url(desc.gif);
+}
+table.tablesorter thead tr .headerSortDown, table.tablesorter thead tr .headerSortUp {
+	//background-color: #8dbdd8;
+	background-color: #e6EEEE;
+}
+table.tablesorter thead tr .tablesorter-headerAsc, table.tablesorter thead tr .tablesorter-headerDesc {
+	//background-color: #8dbdd8;
+	background-color: #e6EEEE;
+}
+#tooltip {
+    margin: 1px;
+    padding: 2px 1em 2px 3px;
+    position: absolute;
+    border:1px gray solid;
+    background-color: #ffffff;
+    display: none;
+}

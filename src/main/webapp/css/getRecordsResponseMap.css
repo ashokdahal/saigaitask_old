@@ -1,0 +1,74 @@
+@charset "UTF-8";
+/* Copyright (c) 2009 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+.csw_get_records {
+	border-bottom: 1px solid #8888CC;
+}
+.csw_get_records td {
+	border-top: 1px solid #8888CC;
+	border-collapse: collapse;
+	vertical-align: top;
+	padding: 2px;
+}
+.csw_get_records .abstract {
+	border-bottom: 1px solid #AABBCC;
+}
+
+.csw_get_records .title {
+	background-color: #EEF6FF;
+}
+
+.csw_records th {
+	font-weight: normal;
+	background-color: #EEF6FF;
+	border-top: 2px solid white;
+	padding: 0px 2px;
+	white-space: nowrap;
+	text-align: center;
+}
+.csw_records td {
+	border-top: 2px solid white;
+	border-style: none;
+}
+.csw_get_records .subject td {
+	border-style: none;
+	padding: 0px;
+	margin: 0px;
+}
+.csw_get_records .preview_div {
+	width: 128px;
+	text-align: center;
+}
+.csw_get_records .preview, .detail_preview {
+	padding: 1px;
+	border: 1px solid gray;
+	max-width: 128px;
+	max-height: 128px;
+	cursor: pointer;
+}
+
+.detail_preview {
+	max-width: 380px;
+	max-height: 260px;
+	cursor: default;
+}
+
+.wmsCapsFormTable th {
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	background-color: #EEE;
+	border-top: 3px solid white;
+	border-bottom: 3px solid white;
+}
+.wmsCapsFormTable td {
+	padding: 3px 0px;
+}
+
+.mapinputbox {
+	border:1px solid #ddddff;
+	
+}

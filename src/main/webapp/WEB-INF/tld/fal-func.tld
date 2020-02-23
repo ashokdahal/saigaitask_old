@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+version="2.0">
+
+<description>JSTL 1.1 functions library</description>
+<display-name>JSTL functions</display-name>
+<tlib-version>1.1</tlib-version>
+<short-name>fal</short-name>
+<uri>http://fal.co.jp/functions</uri>
+
+<function>
+<description>
+escape html-tag exclude br
+</description>
+<name>h</name>
+<function-class>jp.ecom_plat.saigaitask.util.StringUtil</function-class>
+<function-signature>java.lang.String h(java.lang.String)</function-signature>
+<example>
+${fal:h(param:info)}
+</example>
+</function>
+
+<function>
+<description>
+replace br-tag to return
+</description>
+<name>ton</name>
+<function-class>jp.ecom_plat.saigaitask.util.StringUtil</function-class>
+<function-signature>java.lang.String ton(java.lang.String)</function-signature>
+<example>
+${fal:ton(param:info)}
+</example>
+</function>
+
+<function>
+<description>
+delete \r\n, \r, \n
+</description>
+<name>nolf</name>
+<function-class>jp.ecom_plat.saigaitask.util.StringUtil</function-class>
+<function-signature>java.lang.String nolf(java.lang.String)</function-signature>
+<example>
+${fal:nolf(param:info)}
+</example>
+</function>
+
+<function>
+<description>
+Join the elements of an array into a string.
+</description>
+<name>join</name>
+<function-class>jp.ecom_plat.saigaitask.util.StringUtil</function-class>
+<function-signature>java.lang.String join(java.util.List)</function-signature>
+</function>
+
+<function>
+<description>
+Join the elements of an array into a string.
+input separator.
+</description>
+<name>joinWith</name>
+<function-class>jp.ecom_plat.saigaitask.util.StringUtil</function-class>
+<function-signature>java.lang.String join(java.lang.Object, java.lang.String)</function-signature>
+</function>
+
+<function>
+<description>
+convert object to json string.
+</description>
+<name>json</name>
+<function-class>jp.ecom_plat.saigaitask.util.StringUtil</function-class>
+<function-signature>java.lang.String json(java.lang.Object)</function-signature>
+</function>
+
+<function>
+<description>
+convert object to json string with escape.
+</description>
+<name>jsonEsc</name>
+<function-class>jp.ecom_plat.saigaitask.util.StringUtil</function-class>
+<function-signature>java.lang.String jsonEsc(java.lang.Object)</function-signature>
+</function>
+
+<function>
+<description>
+convert String to Integer.
+</description>
+<name>toInteger</name>
+<function-class>jp.ecom_plat.saigaitask.util.StringUtil</function-class>
+<function-signature>java.lang.Integer toInteger(java.lang.String)</function-signature>
+</function>
+
+<function>
+<description>
+convert XMLGregorianCalendar to Date.
+</description>
+<name>xmlGregorianCalendarToDate</name>
+<function-class>jp.ecom_plat.saigaitask.util.TimeUtil</function-class>
+<function-signature>java.util.Date toDate(java.lang.Object)</function-signature>
+</function>
+
+</taglib>

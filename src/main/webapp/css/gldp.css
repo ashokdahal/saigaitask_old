@@ -1,0 +1,133 @@
+.gldp-drigw {
+	position: absolute;
+	font-family: 'helvetica';
+}
+
+/* Core style for every cell */
+.gldp-drigw .core {
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	position: relative;
+	float: left;
+	padding: 0;
+	margin: 0;
+	font-size: 14px;
+	text-align: center;
+	cursor: pointer;
+	color: #222;
+	background: whitesmoke;
+}
+
+/* Cell border */
+.gldp-drigw .border {
+	border-style: solid;
+	border-width: 0;
+	border-color: #008FD3;
+}
+
+/* Month/Year text and select */
+.gldp-drigw .monyear,
+.gldp-drigw .monyear select {
+	font-size: 16px !important;
+	font-weight: bold;
+	background: #EBEFF9;
+}
+
+/* Month/Year text */
+.gldp-drigw .monyear span {
+	margin: 0 5px 0 5px;
+}
+
+/* Prev/Next arrows */
+.gldp-drigw .prev-arrow,
+.gldp-drigw .next-arrow {
+	color: #666;
+	text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.75);
+}
+
+.gldp-drigw .prev-arrow:active,
+.gldp-drigw .next-arrow:active {
+	color: #000;
+}
+
+.gldp-drigw .prev-arrow-off,
+.gldp-drigw .next-arrow-off {
+	color: #000;
+	opacity: 0.15;
+}
+
+/* Days of the week */
+.gldp-drigw .dow {
+	color: #222;
+	font-weight: bold;
+	cursor: default !important;
+	background: #EBEFF9;
+}
+
+/* Weekdays */
+.gldp-drigw .mon,
+.gldp-drigw .tue,
+.gldp-drigw .wed,
+.gldp-drigw .thu,
+.gldp-drigw .fri {
+	font-weight: bold;
+}
+
+/* Weekend days */
+.gldp-drigw .sat {
+	color: #6666ff;
+	font-weight: bold;
+}
+.gldp-drigw .sun {
+	color: #ff6666;
+	font-weight: bold;
+}
+
+/* Selectable days that are outside of current month being shown */
+.gldp-drigw .outday {
+	color: #999 !important;
+}
+
+/* Hover */
+.gldp-drigw .mon:hover,
+.gldp-drigw .tue:hover,
+.gldp-drigw .wed:hover,
+.gldp-drigw .thu:hover,
+.gldp-drigw .fri:hover,
+.gldp-drigw .sat:hover,
+.gldp-drigw .sun:hover {
+	background: #CBCFE9;
+}
+
+/* Non-Selectable days */
+.gldp-drigw .noday {
+	color: #bbb;
+	font-weight: normal;
+	cursor: wait !important;
+	background: #ddd;
+}
+
+/* Currently selected day */
+.gldp-drigw .selected {
+	color: #000;
+	font-weight: bold;
+	border-color: #888;
+	background: yellow;
+}
+
+/* Today */
+.gldp-drigw .today {
+	color: #fff;
+	font-weight: bold;
+	border-color: #000;
+	background: #999;
+}
+
+/* Special */
+.gldp-drigw .special {
+	color: #fff;
+	font-weight: bold;
+	border-color: #444;
+	background: #666;
+}

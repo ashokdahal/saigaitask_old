@@ -1,0 +1,329 @@
+/* Copyright (c) 2013 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+/*  LOGIN -------------------------------------------------------------------------------- */
+
+#login-bg	{
+	background: url(../images/login/login_bg.jpg) no-repeat top center;
+	}
+#login-info {
+	margin-top: 0;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+}
+#login-holder	{
+	width: 508px;
+	/*margin-top: 185px;*/
+	margin-top: 185px;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	}
+#loginbox	{
+	background: url(../images/login/loginbox_bg.png) no-repeat;
+	font-size: 12px;
+	height: 252px;
+	/*line-height: 12px;*/
+	padding-top: 20px;
+	position: relative;
+	width: 508px;
+	}
+#loginbox-title	{
+	font-size: 18px;
+	font-weight: bold;
+	text-align: center;
+	height: 30px;
+	}
+#forgotbox	{
+	background: url(../images/login/loginbox_bg.png) no-repeat;
+	display: none;
+	font-size: 12px;
+	height: 212px;
+	line-height: 12px;
+	padding-top: 60px;
+	position: relative;
+	width: 508px;
+	}
+#loginbox_admin	{
+	background: url(../images/login/loginbox_bg.png) no-repeat;
+	font-size: 12px;
+	height: 252px;
+	/*line-height: 12px;*/
+	padding-top: 20px;
+	position: relative;
+	width: 508px;
+	}
+#forgotbox_admin	{
+	background: url(../images/login/loginbox_bg.png) no-repeat;
+	display: none;
+	font-size: 12px;
+	height: 212px;
+	line-height: 12px;
+	padding-top: 90px;
+	position: relative;
+	width: 508px;
+	}
+#login-inner	{
+	color: #161616;
+	font-family: Tahoma;
+	font-size: 13px;
+	line-height: 12px;
+	margin: 0 auto;
+	width: 360px;
+	}
+#login-inner label	{
+	color: #161616;
+	cursor: pointer;
+	font-family: Tahoma;
+	font-weight: bold;
+	line-height: 12px;
+	padding-left: 10px;
+
+	}
+ .checkbox-size	{
+	width:13px;
+	height:13px;
+	margin: 5px 0;
+
+	}
+#login-inner th	{
+	padding: 0 0 6px 0;
+	text-align: left;
+	width: 130px;
+	}
+#login-inner td	{
+	padding: 0 0 6px 0;
+	}
+.login-inp	{
+	background: url(../images/login/inp_login.gif) no-repeat;
+	border: none;
+	color: #fff;
+	font-size: 16px;
+	height: 28px;
+	width: 204px;
+	padding-top: 0px;
+	padding-right: 6px;
+	padding-bottom: 0;
+	padding-left: 10px;
+	}
+#logo-login	{
+	float: left;
+	height: 35px;
+	margin: 145px 0 0 15px;
+	}
+a.forgot-pwd	{
+	bottom: 30px;
+	color: #161616;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 12px;
+	position: absolute;
+	right: 40px;
+	}
+a:hover.forgot-pwd	{
+	color: #fff;
+	}
+#forgotbox-text	{
+	color: #161616;
+	font-family: Tahoma;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 12px;
+	margin: 0 auto 40px auto;
+	width: 380px;
+	}
+#forgot-inner	{
+	color: #161616;
+	font-family: Tahoma;
+	font-size: 13px;
+	line-height: 12px;
+	margin: 0 auto;
+	width: 330px;
+	}
+#forgot-inner label	{
+	color: #161616;
+	cursor: pointer;
+	font-family: Tahoma;
+	font-weight: bold;
+	line-height: 12px;
+	padding-left: 10px;
+	}
+#forgot-inner th	{
+	padding: 0 0 6px 0;
+	text-align: left;
+	width: 110px;
+	}
+#forgot-inner td	{
+	padding: 0 0 6px 0;
+	}
+a.back-login	{
+	background: url(../images/login/icon_back_login.gif) no-repeat 0 4px;
+	bottom: 30px;
+	color: #161616;
+	font-family: Tahoma;
+	font-size: 11px;
+	font-weight: bold;
+	line-height: 12px;
+	padding: 0 0 0 10px;
+	position: absolute;
+	right: 40px;
+	}
+a:hover.back-login	{
+	color: #fff;
+	}
+.submit-login	{
+	background: url(../images/login/submit_login_bg.gif) no-repeat;
+	border: none;
+	cursor: pointer;
+	display: block;
+	height: 29px;
+/*	text-indent: -3000px;*/
+	width: 73px;
+	color:#f0f0f0;
+	font-weight: bold;
+	}
+.submit-login:hover	{
+	background: url(../images/login/submit_login_bg.gif) no-repeat 0 -29px;
+	}
+
+
+/*  STYLED SELECTBOXES style 1 --------------------------------- */
+
+.styledselect {
+background: #2a2a2a;
+border: 1px solid #424242;
+	color:#fff;
+	width:120px;
+	padding: 5px;
+	line-height: 14px;
+	margin-right: 6px;
+	font-size: 12px;
+}
+
+div.selectbox-wrapper	{
+	background-color: #2a2a2a;
+	border: none;
+	border-bottom: none;
+	margin: 0px;
+	margin-top: 0px;
+	max-height: 200px;
+	overflow: auto;
+	padding: 0px;
+	position: absolute;
+	text-align: left;
+	width: 400px;
+	z-index: 10;
+	}
+div.selectbox-wrapper ul	{
+	list-style-type: none;
+
+	margin: 0px;
+	padding: 0px;z-index: 10;
+	}
+div.selectbox-wrapper ul li.selected	{
+	background-color: 575757;
+	color: #fff;
+	}
+div.selectbox-wrapper ul li.current	{
+	background-color: #575757;
+	}
+div.selectbox-wrapper ul li	{
+	border-bottom: none;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	font-size: 12px;
+	line-height: 12px;
+	list-style-type: none;
+	margin: 0;
+	padding: 6px 2px 6px 10px;
+	}
+.selectbox_styled	{
+	background: url(../images/shared/top_search_select.gif) left no-repeat;
+	border: none;
+	border-left: none;
+	color: #fff;
+	cursor: pointer;
+	display: block;
+	font-family: Arial;
+	font-size: 12px;
+	height: 20px;
+	margin: 0px 0px 0px 0px;
+	padding: 6px 0 0 6px;
+	text-align: left;
+	width: 105px;
+	z-index: 10;
+	}
+
+/*  STYLED SELECTBOXES style 2 --------------------------------- */
+div.selectbox-wrapper2	{
+	background-color: #e3e3e3;
+	border: none;
+	border-bottom: none;
+	margin: 0px;
+	margin-top: 0px;
+	max-height: 200px;
+	overflow: auto;
+	padding: 0px;
+	position: absolute;
+	text-align: left;
+	width: 400px;
+	}
+div.selectbox-wrapper2 ul	{
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+	}
+div.selectbox-wrapper2 ul li.selected2	{
+	background-color: #94b52c;
+	color: #fff;
+	}
+div.selectbox-wrapper2 ul li.current2	{
+	background-color: #94b52c;
+	color: #fff;
+	}
+div.selectbox-wrapper2 ul li	{
+	border-bottom: none;
+	color: #393939;
+	cursor: pointer;
+	display: block;
+	font-size: 12px;
+	line-height: 12px;
+	list-style-type: none;
+	margin: 0;
+	padding: 6px 2px 6px 10px;
+	}
+.styledselect_form_1	{
+	background: url(../images/forms/form_select.gif) left no-repeat;
+	border: none;
+	border-left: none;
+	color: #393939;
+	cursor: pointer;
+	display: block;
+	font-family: Arial;
+	font-size: 12px;
+	height: 24px;
+	margin: 0px 0px 0px 0px;
+	padding: 7px 0 0 6px;
+	text-align: left;
+	width: 192px;
+	}
+.styledselect_form_2	{
+	background: url(../images/forms/form_select_small.gif) left no-repeat;
+	border: none;
+	border-left: none;
+	color: #393939;
+	cursor: pointer;
+	display: block;
+	font-family: Arial;
+	font-size: 12px;
+	height: 24px;
+	margin: 0px 0px 0px 0px;
+	padding: 7px 0 0 10px;
+	text-align: left;
+	width: 60px;
+	}

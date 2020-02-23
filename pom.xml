@@ -1,0 +1,1640 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>jp.ecom_plat.saigaitask</groupId>
+	<artifactId>SaigaiTask2</artifactId>
+	<version>2.3a-SNAPSHOT</version>
+	
+	<packaging>war</packaging>
+	<name>SaigaiTask2</name>
+
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.2.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+
+	<build>		
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<outputDirectory>src/main/webapp/WEB-INF/classes</outputDirectory>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>data/sql/README.txt</exclude>
+				</excludes>
+			</resource>
+		</resources>
+		<testOutputDirectory>target/test-classes</testOutputDirectory>
+		<testSourceDirectory>src/test/java</testSourceDirectory>
+		<testResources>
+			<testResource>
+				<directory>src/test/resources</directory>
+			</testResource>
+		</testResources>
+		<defaultGoal>validate</defaultGoal>
+
+  		<plugins>
+			<!-- ============================================================ -->
+			<!-- ===================== default Lifecycle ===================== -->
+			<!-- ============================================================ -->
+			<!-- ===================== initialize phase ===================== -->
+			
+			<!-- ===================== generate-sources phase ===================== -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>build-helper-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>add-source</id>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>add-source</goal>
+						</goals>
+						<configuration>
+							<sources>
+								<source>src/deprecated/java</source>
+							</sources>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- ===================== compile phase ===================== -->
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>UTF-8</encoding>
+					<compilerArgument>-Xlint</compilerArgument>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>make-jar</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Built-Time>${maven.build.timestamp}</Built-Time>
+							<SVN-Revision>${svn.committedRevision}</SVN-Revision>
+							<SVN-Date>${svn.committedDate}</SVN-Date>
+							<SVN-Status>${svn.specialStatus}</SVN-Status>
+							<SVN-Path>${svn.path}</SVN-Path><!-- branches -->
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<plugin>
+				<artifactId>maven-source-plugin</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>org.tmatesoft.svnkit</groupId>
+						<artifactId>svnkit</artifactId>
+						<version>1.8.1</version>
+					</dependency>
+				</dependencies>
+				<executions>
+					<execution>
+						<id>source-jar</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<archive>
+						<manifestEntries>
+							<Built-Time>${maven.build.timestamp}</Built-Time>
+							<SVN-Revision>${svn.committedRevision}</SVN-Revision>
+							<SVN-Date>${svn.committedDate}</SVN-Date>
+							<SVN-Status>${svn.specialStatus}</SVN-Status>
+							<SVN-Path>${svn.path}</SVN-Path><!-- branches -->
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+			<!-- ===================== package phase ===================== -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<configuration>
+					<!-- <warName>SaigaiTask</warName> -->
+					<containerConfigXML>${basedir}/src/main/webapp/META-INF/context.xml</containerConfigXML>
+					<includeEmptyDirectories>true</includeEmptyDirectories>
+					<!-- WARに含めないフォルダ、ファイルをカンマ区切りで指定する. -->
+					<warSourceExcludes>
+						upload/**,
+						META-INF/maven/jp.ecom_plat.saigaitask/SaigaiTask2/pom.properties,
+						WEB-INF/classes/data/sql/README.txt,
+						WEB-INF/lib/sources/**,
+						WEB-INF/data/**
+					</warSourceExcludes>
+					<!-- classesに含めるリソースファイルの設定する. 先に記述した方で上書きされるため注意する. -->
+					<webResources>
+						<resource>
+							<directory>${basedir}/src/product/resources</directory>
+							<targetPath>WEB-INF/classes</targetPath>
+						</resource>
+						<resource>
+							<directory>${basedir}/src/main/java</directory>
+							<targetPath>WEB-INF/src</targetPath>
+						</resource>
+						<resource>
+							<directory>${basedir}/src/main/webapp/WEB-INF/lib/sources</directory>
+							<targetPath>WEB-INF/lib/sources</targetPath>
+							<include>ecommap*.jar</include>
+						</resource>
+					</webResources>
+					<archive>
+						<manifestEntries>
+							<Built-Time>${maven.build.timestamp}</Built-Time>
+							<!-- <SVN-Revision>${svn.revision}</SVN-Revision> -->
+							<SVN-Revision>${svn.committedRevision}</SVN-Revision>
+							<SVN-Date>${svn.committedDate}</SVN-Date>
+							<SVN-Status>${svn.specialStatus}</SVN-Status>
+							<SVN-Path>${svn.path}</SVN-Path><!-- branches -->
+						</manifestEntries>
+					</archive>
+				</configuration>
+			</plugin>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+			<!-- ===================== install phase ===================== -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-install-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>install-jar</id>
+						<phase>install</phase>
+						<goals>
+							<goal>install-file</goal>
+						</goals>
+						<configuration>
+							<packaging>jar</packaging>
+							<artifactId>${project.artifactId}</artifactId>
+							<groupId>${project.groupId}</groupId>
+							<version>${project.version}</version>
+							<file>${project.build.directory}/${project.artifactId}-${project.version}.jar</file>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<!-- ============================================================ -->
+			<!-- ===================== cobertura Lifecycle ===================== -->
+			<!-- ============================================================ -->
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>cobertura-maven-plugin</artifactId>
+				<configuration>
+					<formats>
+						<format>html</format>
+						<format>xml</format>
+					</formats>
+					<instrumentation>
+						<excludes>
+							<exclude>**/*Test.class</exclude>
+						</excludes>
+					</instrumentation>
+				</configuration>
+			</plugin>
+			<!-- ============================================================ -->
+			<!-- ===================== site Lifecycle ===================== -->
+			<!-- ============================================================ -->
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<configuration>
+					<locales>ja</locales>
+					<inputEncoding>UTF-8</inputEncoding>
+					<outputEncoding>UTF-8</outputEncoding>
+					<reportPlugins>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-project-info-reports-plugin</artifactId>
+							<version>2.4</version>
+							<configuration>
+								<dependencyDetailsEnabled>false</dependencyDetailsEnabled>
+								<dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-javadoc-plugin</artifactId>
+							<version>2.8.1</version>
+							<configuration>
+								<source>1.8</source>
+								<showPackage>false</showPackage>
+								<showPrivate>true</showPrivate>
+								<charset>UTF-8</charset>
+								<encoding>UTF-8</encoding>
+								<charset>UTF-8</charset>
+								<decencoding>UTF-8</decencoding>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>findbugs-maven-plugin</artifactId>
+							<version>2.5.2</version>
+							<configuration>
+								<xmlOutput>true</xmlOutput>
+								<findbugsXmlOutput>true</findbugsXmlOutput>
+								<findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+								<effort>Max</effort>
+								<excludeFilterFile>${basedir}/src/site/findbugs/findbugs-exclude.xml</excludeFilterFile>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.apache.maven.plugins</groupId>
+							<artifactId>maven-pmd-plugin</artifactId>
+							<version>2.7.1</version>
+							<configuration>
+								<linkXRef>false</linkXRef>
+								<sourceEncoding>UTF-8</sourceEncoding>
+								<targetJdk>1.8</targetJdk>
+								<excludes>
+									<exclude>**/entity/db/*.java</exclude>
+									<exclude>**/entity/names/*.java</exclude>
+									<exclude>**/form/**/*.java</exclude>
+								</excludes>
+							</configuration>
+						</plugin>
+						<plugin>
+							<groupId>org.codehaus.mojo</groupId>
+							<artifactId>cobertura-maven-plugin</artifactId>
+							<version>2.0</version>
+							<configuration>
+								<formats>
+									<format>xml</format>
+									<!-- <format>html</format> -->
+								</formats>
+							</configuration>
+						</plugin>
+					</reportPlugins>
+				</configuration>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<artifactId>maven-eclipse-plugin</artifactId>
+					<configuration>
+						<wtpversion>1.5</wtpversion>
+						<!-- <downloadSources>true</downloadSources> -->
+						<!-- <downloadJavadocs>true</downloadJavadocs> -->
+					</configuration>
+				</plugin>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-dependency-plugin
+										</artifactId>
+										<versionRange>
+											[2.0,)
+										</versionRange>
+										<goals>
+											<goal>
+												copy-dependencies
+											</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>
+											org.apache.maven.plugins
+										</groupId>
+										<artifactId>
+											maven-jar-plugin
+										</artifactId>
+										<versionRange>
+											[2.5,)
+										</versionRange>
+										<goals>
+											<goal>jar</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven.seasar.org</id>
+			<name>The Seasar Foundation Maven2 Repository</name>
+			<url>http://maven.seasar.org/maven2</url>
+		</pluginRepository>
+		<pluginRepository>
+			<id>org.tmatesoft</id>
+			<name>Subversion 1.8 Compatibility</name>
+			<url>http://maven.tmatesoft.com/content/repositories/releases/</url>
+			<layout>default</layout>
+		</pluginRepository>
+		<pluginRepository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+	<repositories>
+		<repository>
+			<id>local</id>
+			<name>Local Repository</name>
+			<url>file:${basedir}/repo</url>
+		</repository>
+		<repository>
+			<id>maven.seasar.org</id>
+			<name>The Seasar Foundation Maven2 Repository</name>
+			<url>http://maven.seasar.org/maven2</url>
+		</repository>
+		<repository>
+			<id>twitter4j.org</id>
+			<name>twitter4j.org Repository</name>
+			<url>http://twitter4j.org/maven2</url>
+		</repository>
+		<repository>
+			<id>osgeo</id>
+			<name>Open Source Geospatial Foundation Repository</name>
+			<url>http://download.osgeo.org/webdav/geotools/</url>
+		</repository>
+		<repository>
+			<id>central</id>
+			<name>Maven Repository Switchboard</name>
+			<url>http://repo1.maven.org/maven2</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!-- jodconverter -->
+		<repository>
+			<id>public</id>
+			<url>http://maven.nuxeo.org/nexus/content/groups/public</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+		<!-- JavaAPIforKml -->
+		<repository>
+			<id>maven2-repository.dev.java.net</id>
+			<name>Java.net Maven 2 Repository</name>
+			<url>http://download.java.net/maven/2</url>
+			<layout>default</layout>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<dependencies>
+		<!-- ===================== Spring Dependencies ===================== -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			<optional>true</optional>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jta-bitronix</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.jms</groupId>
+					<artifactId>jms-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<!--
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+		 -->
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<!-- /docs でアクチュエータについてのドキュメントをアクセス可能にする -->
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-actuator-docs</artifactId>
+		</dependency> -->
+		<!-- for actuator format=html endpoints.hypermedia.enabled=true -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+		<!-- Springアプリ管理ツールの spring-boot-admin のクライアント -->
+		<!--
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+    		<version>1.4.6</version>
+		</dependency>
+		-->
+
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-tomcat</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.tomcat.embed</groupId>
+			<artifactId>tomcat-embed-jasper</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.tomcat</groupId>
+		    <artifactId>tomcat-dbcp</artifactId>
+		    <version>${tomcat.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.tiles</groupId>
+			<artifactId>tiles-extras</artifactId>
+			<version>3.0.7</version>
+		</dependency>
+
+
+		<!-- ===================== TEST ===================== -->
+		<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>2.1_3</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymock</artifactId>
+			<version>2.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.easymock</groupId>
+			<artifactId>easymockclassextension</artifactId>
+			<version>2.4</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.freemarker</groupId>
+			<artifactId>freemarker</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.tmatesoft.svnkit</groupId>
+			<artifactId>svnkit</artifactId>
+			<version>1.2.0.4949</version>
+			<scope>test</scope>
+		</dependency>
+
+		<!-- ===================== DEVELOP ONLY ===================== -->
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet.jsp/javax.servlet.jsp-api -->
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>javax.servlet.jsp-api</artifactId>
+			<version>2.3.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seasar.container</groupId>
+			<artifactId>s2jdbc-gen</artifactId>
+			<version>2.4.45</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- ===================== JDBC Driver ===================== -->
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+		</dependency>
+
+		<!-- ===================== COMPILE ===================== -->
+		<!-- jp.ecom_plat.saigaitask.util.FileUtil -->
+		<dependency>
+			<groupId>org.apache.ant</groupId>
+			<artifactId>ant</artifactId>
+			<version>1.10.1</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>org.apache.ant</groupId>
+					<artifactId>ant-launcher</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>woodstox-core-asl</artifactId>
+			<version>4.4.1</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.codehaus.woodstox</groupId>
+			<artifactId>stax2-api</artifactId>
+			<version>3.1.4</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>javax.xml.stream</groupId>
+			<artifactId>stax-api</artifactId>
+			<version>1.0-2</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.saxon</groupId>
+			<artifactId>Saxon-HE</artifactId>
+			<version>9.7.0-15</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>dom4j</groupId>
+					<artifactId>dom4j</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>jdom</artifactId>
+					<groupId>org.jdom</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xml-resolver</artifactId>
+					<groupId>xml-resolver</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xom</artifactId>
+					<groupId>xom</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>jp.ne.publiccommons</groupId>
+			<artifactId>publiccommons</artifactId>
+			<version>1.3.5</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/publiccommons-1.3.5.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.sum.xml</groupId>
+			<artifactId>Saxon-HE</artifactId>
+			<version>xws-security</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/xws-security-3.0.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.facebook4j</groupId>
+			<artifactId>facebook4j-core</artifactId>
+			<version>2.4.8</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.twitter4j</groupId>
+			<artifactId>twitter4j-core</artifactId>
+			<version>4.0.6</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>jp.ecom_plat</groupId>
+			<artifactId>ecommap</artifactId>
+			<version>2.5.x-2.2.2-rev4214-SNAPSHOT</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>org.json</artifactId>
+			<version>2.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>net.sf.json-lib</groupId>
+			<artifactId>json-lib</artifactId>
+			<version>2.4</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.6</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-net</groupId>
+			<artifactId>commons-net</artifactId>
+			<version>3.6</version>
+		</dependency>
+		<dependency>
+			<groupId>com.vividsolutions</groupId>
+			<artifactId>jts</artifactId>
+			<version>1.13</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>xercesImpl</artifactId>
+					<groupId>xerces</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-pool</groupId>
+			<artifactId>commons-pool</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4.7</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.activation</groupId>
+					<artifactId>activation</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.geocoder-java</groupId>
+			<artifactId>geocoder-java</artifactId>
+			<version>0.16</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>commons-httpclient</groupId>
+					<artifactId>commons-httpclient</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>jdom</groupId>
+			<artifactId>jdom</artifactId>
+			<version>1.1</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.jdom</groupId>
+			<artifactId>jdom2</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>jaxen</groupId>
+			<artifactId>jaxen</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>antlr</groupId>
+			<artifactId>antlr</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>aopalliance</groupId>
+			<artifactId>aopalliance</artifactId>
+			<version>1.0</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>1.9.3</version>
+			<!--
+			<scope>runtime</scope>
+			<optional>true</optional>
+			sa-struts.jar を廃止してsrc/deprecated/javaに配置した org.seasar.struts.action.WrapperUtil をコンパイルするために、
+			commons-beanutils を runtime から compile に変更。
+			 -->
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-digester</groupId>
+			<artifactId>commons-digester</artifactId>
+			<version>2.1</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>commons-el</groupId>
+			<artifactId>commons-el</artifactId>
+			<version>1.0</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.5</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-logging</groupId>
+			<artifactId>commons-logging</artifactId>
+			<version>1.2</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>avalon-framework</groupId>
+					<artifactId>avalon-framework</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>logkit</groupId>
+					<artifactId>logkit</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>1.6</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>xml-apis</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.13</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-math3</artifactId>
+			<version>3.4.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-annotation_1.0_spec</artifactId>
+			<version>1.1.1</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-ejb_3.0_spec</artifactId>
+			<version>1.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-interceptor_3.0_spec</artifactId>
+			<version>1.0.1</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jpa_3.0_spec</artifactId>
+			<version>1.1.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.geronimo.specs</groupId>
+			<artifactId>geronimo-jta_1.1_spec</artifactId>
+			<version>1.1.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>oro</groupId>
+			<artifactId>oro</artifactId>
+			<version>2.0.8</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+<!--
+		<dependency>
+			<groupId>taglibs</groupId>
+			<artifactId>standard</artifactId>
+			<version>1.1.2</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+ -->
+		<!-- JVNDB-2015-001716 の対応で standard-1.1.2.jar からバージョンアップ -->
+		<dependency>
+			<groupId>org.apache.taglibs</groupId>
+			<artifactId>taglibs-standard-impl</artifactId>
+			<version>1.2.5</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.javassist/javassist -->
+		<dependency>
+			<groupId>org.javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.22.0-GA</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>1.2.17</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>ognl</groupId>
+			<artifactId>ognl</artifactId>
+			<version>3.2</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.poi</groupId>
+			<artifactId>poi</artifactId>
+			<version>3.15</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.poi</groupId>
+    		<artifactId>poi-ooxml</artifactId>
+    		<version>3.15</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+    		<groupId>org.apache.xmlbeans</groupId>
+    		<artifactId>xmlbeans</artifactId>
+    		<version>2.6.0</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>stax</groupId>
+					<artifactId>stax-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seasar.container</groupId>
+			<artifactId>s2-extension</artifactId>
+			<version>2.4.48</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seasar.container</groupId>
+			<artifactId>s2-framework</artifactId>
+			<version>2.4.48</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>jboss</groupId>
+					<artifactId>javassist</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seasar.container</groupId>
+			<artifactId>s2-tiger</artifactId>
+			<version>2.4.48</version>
+			<scope>compile</scope>
+		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.seasar.sastruts</groupId>
+			<artifactId>sa-struts</artifactId>
+			<version>1.0.4-sp9</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>struts</groupId>
+			<artifactId>struts</artifactId>
+			<version>1.2.9</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>xalan</groupId>
+					<artifactId>xalan</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		-->
+		<!-- PdfServlet -->
+		<dependency>
+			<groupId>com.lowagie</groupId>
+			<artifactId>itext</artifactId>
+			<version>2.1.7</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>bouncycastle</groupId>
+					<artifactId>bcmail-jdk14</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>bouncycastle</groupId>
+					<artifactId>bcprov-jdk14</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- iTextAsian.jar は日本語フォントが入っている(PdfServletでは未使用) -->
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-epsg-hsql</artifactId>
+			<version>${gt.version}</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>hsqldb</groupId>
+					<artifactId>hsqldb</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>hsqldb</groupId>
+			<artifactId>hsqldb</artifactId>
+			<version>1.8.0.10</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-api</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-coverage</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>it.geosolutions.imageio-ext</groupId>
+					<artifactId>imageio-ext-tiff</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-cql</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-graph</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-main</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-metadata</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-wms</artifactId>
+			<version>9.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-render</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-xml</artifactId>
+			<version>9.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools.xsd</groupId>
+			<artifactId>gt-xsd-core</artifactId>
+			<version>${gt.version}</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+			<exclusions>
+				<!-- runtime:SLDのパースで必要
+				<exclusion>
+					<artifactId>commons-jxpath</artifactId>
+					<groupId>commons-jxpath</groupId>
+					<version>1.3</version>
+				</exclusion>
+				 -->
+				<exclusion>
+					<artifactId>common</artifactId>
+					<groupId>org.eclipse.emf</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>ecore</artifactId>
+					<groupId>org.eclipse.emf</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>picocontainer</artifactId>
+					<groupId>picocontainer</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xml-apis-xerces</artifactId>
+					<groupId>xml-apis</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xsd</artifactId>
+					<groupId>org.eclipse.xsd</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>xercesImpl</artifactId>
+					<groupId>xerces</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools.xsd</groupId>
+			<artifactId>gt-xsd-gml2</artifactId>
+			<version>${gt.version}</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-shapefile</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- SLDをSQLに変換するために必要 -->
+		<dependency>
+			<groupId>org.geotools</groupId>
+			<artifactId>gt-jdbc</artifactId>
+			<version>${gt.version}</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>commons-jxpath</groupId>
+			<artifactId>commons-jxpath</artifactId>
+			<version>1.3</version>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.geoserver</groupId>
+			<artifactId>geoserver</artifactId>
+			<version>${gs.version}</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+			<type>pom</type>
+			<exclusions>
+				<exclusion>
+					<artifactId>spring-webmvc</artifactId>
+					<groupId>org.springframework</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.geoserver</groupId>
+			<artifactId>main</artifactId>
+			<version>${gs.version}</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/main-2.1.4.jar</systemPath>
+			<!--
+			<scope>runtime</scope>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-httpclient</artifactId>
+					<groupId>commons-httpclient</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>org.geotools</artifactId>
+					<groupId>gt-imagemosaic</groupId>
+				</exclusion>
+			</exclusions>
+			 -->
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<scope>compile</scope>
+		</dependency>
+<!-- 18/07/12 jarが取得できなくなったので一旦コメントアウト 
+		<dependency>
+			<groupId>com.sun.media</groupId>
+			<artifactId>jai_codec</artifactId>
+			<version>1.1.3</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+ -->
+		<dependency>
+			<groupId>org.flywaydb</groupId>
+			<artifactId>flyway-core</artifactId>
+			<scope>compile</scope>
+			<version>4.2.0</version>
+		</dependency>
+		<dependency>
+			<groupId>gov.nasa.worldwind</groupId>
+			<artifactId>worldwind</artifactId>
+			<version>1.5.1</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/worldwind.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>jp.hishidama.eval</groupId>
+			<artifactId>eval</artifactId>
+			<version>1.0.0</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/eval16.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.artofsolving.jodconverter</groupId>
+			<artifactId>jodconverter-core</artifactId>
+			<version>3.0-beta-4</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/jodconverter-core-3.0-beta-4.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.juniversalchardet</groupId>
+			<artifactId>juniversalchardet</artifactId>
+			<version>1.0.3</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.authzserver</artifactId>
+			<version>1.0.1</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>json</artifactId>
+					<groupId>org.json</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>org.apache.oltu.oauth2.common</artifactId>
+			<version>1.0.1</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>json</artifactId>
+					<groupId>org.json</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.oltu.oauth2</groupId>
+			<artifactId>
+				org.apache.oltu.oauth2.resourceserver
+			</artifactId>
+			<version>1.0.1</version>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.notnoop.apns</groupId>
+			<artifactId>apns</artifactId>
+			<version>1.0.0.Beta6</version>
+			<scope>compile</scope>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-httpclient</artifactId>
+					<groupId>commons-httpclient</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpcore</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpmime</artifactId>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.google.zxing</groupId>
+			<artifactId>javase</artifactId>
+			<version>3.3.2</version>
+			<scope>compile</scope>
+		</dependency>
+		<!-- ===================== RUNTIME ===================== -->
+		<!-- dependency.scope=runtime の依存ライブラリは package で WEB-INF/lib に追加されるようになっている -->
+		<!-- dependency.optional=true にすることで WEB-INF/lib に追加されないようにする -->
+		<dependency>
+			<groupId>de.micromata.jak</groupId>
+			<artifactId>JavaAPIforKml</artifactId>
+			<version>2.2.0</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<!-- com.notnoop.apns 用 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient-cache</artifactId>
+			<version>4.5.3</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>postgis</groupId>
+			<artifactId>postgis</artifactId>
+			<version>1.5.2</version>
+			<scope>system</scope>
+			<systemPath>${basedir}/src/main/webapp/WEB-INF/lib/postgis-1.5.2.jar</systemPath>
+		</dependency>
+		<dependency>
+			<groupId>org.ehcache</groupId>
+			<artifactId>ehcache</artifactId>
+		</dependency>
+		<!-- eコミマップで利用しているOAuthライブラリ -->
+		<dependency>
+		    <groupId>net.oauth.core</groupId>
+		    <artifactId>oauth-provider</artifactId>
+		    <version>20100527</version>
+			<scope>runtime</scope>
+			<optional>true</optional>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security.oauth</groupId>
+			<artifactId>spring-security-oauth2</artifactId>
+			<version>2.0.2.RELEASE</version>
+		</dependency>
+	</dependencies>
+	<properties>
+		<timestamp>${maven.build.timestamp}</timestamp>
+		<maven.build.timestamp.format>yyyyMMddHHmm</maven.build.timestamp.format>
+		<gs.version>2.1.4</gs.version>
+		<gt.version>2.7.5</gt.version>
+	</properties>
+	<url>http://ecom-plat.jp/k-cloud/</url>
+	<description>○V1.4開発版 2016/01/25
+【Ver 1.4.0 新機能】
+多言語化対応
+タブ、メニュー強調表示を追加。
+地図ボタンに初期表示位置に移動するホームボタンを追加。
+ポリゴンレイヤでのライン描画機能を追加。
+地図画面の表示状態再現機能（最後に表示した地図画面の状態を再現する）を追加。
+地図のズームアニメーションを無効化。
+地図マスター情報テーブルの論理削除機能を追加。
+解像度を選択形式で登録する機能を追加。
+気象庁防災情報XML作成ツールを追加。
+自治体セットアッパーに自治体削除機能を追加
+スマートフォンからの被災写真投稿機能を追加。
+職員参集、情報発信からAndroidスマートフォンにPUSH通知機能を追加。
+代理サーバ機能を追加。
+
+■不具合修正
+気象庁ＸＭＬ受信で取得条件を複数設定すると同じ情報が重複して受信される不具合修正
+管理画面フィルタ情報設定不具合修正
+
+○V1.3.1 2016/01/25
+Ver 1.1.4, 1.2.6 の不具合修正込み
+■機能修正
+ポリゴンレイヤでの擬似ポイント描画機能
+自治体セットアッパーのエクスポートで、通信途絶クラスをエクスポートから除外
+ヒストリーテーブルのDBアップグレード（groupid追加）
+
+■不具合修正
+通信途絶：インポート・エクスポート不具合修正
+表示される緯度経度の60進法表記変更処理が原因による登録情報ポップアップが取得できない不具合修正。
+管理画面からメタデータ削除できない不具合修正.
+地図画面の動的フィルタで空間検索範囲条件のないフィルタの再検索でエラーとなる不具合修正。
+地図画面でシングルポリゴンが編集できない不具合を修正。
+
+○V1.3.0 2015/09/03
+Ver 1.1.3, 1.2.5 の不具合修正込み
+【Ver 1.3.0 新機能】
+・通信途絶機能
+　・災害データのインポート/エクスポート
+　・背景地図のインポート/エクスポート
+・訓練モード機能
+・JAlert受信機能
+・地図関連機能の高度化
+　・複数フィルタ対応
+　・クリアリングハウスのXYZレイヤ対応
+　・メモ機能
+　・UTMグリッド表示機能
+　・外部地図表示機能: バルーン表示対応、WMS.GetCapabilitiesによる設定対応
+　・印刷機能：背景地図なし対応、タイトルなし対応
+　・ランドマーク機能
+　・ポリゴンの円描画機能
+　・地図の表示範囲制限機能
+・リスト関連機能の高度化
+　改行入力対応、長文表示対応、数値の右寄せ対応
+・管理画面: 一括削除機能
+・その他
+　座標の60進表記対応（10進表記切り替え可）
+
+○V1.2.6 2016/01/25
+・V1.1.4不具合修正
+
+■不具合修正
+KMLCacheファイル名のWindows対応。
+KMLレイヤでラベル表示のスタイル設定が描画直後にラベル表示されていない不具合を修正。
+KMLのプロキシが 302リダイレクト で2回リクエストされていたため修正。
+KMLのポップアップが無効になることがある不具合修正。
+地図ポップアップ無効時にKMLのポップアップも無効にするように修正。
+IEにてKMLリロード処理でキャッシュが読まれていた不具合を修正。
+KMLの自動リロードでインターバルだとタイミングのずれの不具合修正。
+地図画面にて地図KMLレイヤ情報にてレイヤIDの設定がない場合にエラーメッセージを表示するように修正。
+KML取得失敗時にアラートメッセージを出すように変更。
+自治体セットアッパーのインポートで、地図KMLレイヤ情報のレイヤIDが変換されていなかったため修正。
+
+○V1.2.5 2015/09/03
+・V1.1.3不具合修正
+
+○V1.2.4 2015/08/10
+・V1.1.2不具合修正
+
+○V1.2.3 2015/07/06
+[不具合修正]
+
+・被災集計機能の過去集計選択時にデバッグアラートが表示されていたため修正。
+
+・監視観測の「データ判定通知情報」設定が管理画面にて重複して表示される不具合修正。
+
+・地図画面での地物登録にてテキストフィールドの入力値がDBに保存されない不具合修正。
+
+○V1.2.2 2015/06/24
+【KMLレイヤ】
+・初回表示時にキャッシュを利用しないように修正。
+
+○V1.2.1 2015/06/02
+【KMLレイヤ】
+・eコミに設定した再読み込み間隔による自動リロード機能
+・凡例のチェックボックスによるリロード機能
+
+○V1.2 2015/05/15
+・KMLレイヤの印刷
+
+○V1.2a 2015/05/01
+・KMLレイヤの表示・ポップアップ
+
+○V1.1.4 2016/01/25
+
+■機能修正
+自治体セットアッパー
+・同じドメインを使っている場合のエラーメッセージを警告メッセージに変更。
+・登録完了後に成功メッセージを表示するように変更。
+・マスタマップ未設定時にメッセージを出すように修正。
+・自治体ドロップダウンリストに無効になっているものを表示するように修正。（自治体名の前に＜無効＞と表示）
+・自治体ドロップダウンリストに自治体種別:その他の場合でも「県名＋市区町村名」で表示するように変更した。
+・「設定のインポート」のパスワード、eコミアカウントを必須入力から任意入力に変更した。
+・テレメータサーバ情報のユーザID/パスワードカラムを認証情報カラムと扱うように変更し、エクスポートされないように変更。
+・ファイルアップロードサイズが上限超えた場合にエラーメッセージを表示するように修正。
+自治体セットアッパーのシステムマスタのリストアで、システムマスタのリストア後、自治体設定・データの全削除処理を追加。
+地図画面での地物登録失敗時にエラーメッセージを表示するように変更。
+ジオコーダを設定ファイルで設定するように変更。デフォルトは指定無し(ジオコーダ無効)。
+Google Maps API のバージョンチェックをするように変更。
+Google Maps API で region 指定を追加。
+タブ・メニューのリンク先が 302 リダイレクトとならないようにURLを修正。
+ファイルアップロード上限を 5M から 20M に変更。
+自治体種別がその他の場合でも「都道府県の自治体ID」を設定できるように変更。
+
+■不具合修正
+自治体セットアッパーのインポートにて
+・論理削除されたものを外部参照している設定のインポートでエラーとなる不具合修正。
+・地図参照レイヤ情報のレイヤIDが変換されていなかったため修正。
+・マスタマップの復元先が不正によるエラー時に自治体情報が作成されてしまう不具合を修正。
+・フィルタ条件の空間検索範囲レイヤの読込エラーとなる不具合を修正。
+・フィルタリング条件の復元先地図が見つからない場合、復元先を有効な地図に自動で切り替えるように修正。
+・フィルタ条件の属性条件がエラーとなる不具合を修正。
+・アラームメッセージ情報がインポートできない不具合を修正。
+・登録情報のコンテンツファイルのリストア失敗を無視するように修正。
+・DBの一意制約違反の場合にエラーメッセージを表示するように修正。
+自治体セットアッパーの「ユーザ・メニュー階層」にて、保存した際に削除したメニューが復活することがある不具合を修正。
+自治体セットアッパーのマスタ入れ替えのインポートで、本部会議のシステムメニューが正しくインポートされない不具合修正。
+自治体セットアッパーで自治体作成画面をメニューから表示するとシステム名称が表示されない不具合を修正
+テーブルマスタ情報の論理削除対応漏れの不具合修正。
+発令状況でNULLの場合にエラーとなる不具合修正。
+避難勧告レイヤでテーブルIDが未設定(null) の場合の対応。（他自治体のテーブルIDが設定された推奨設定をインポートすると発生）
+テーブルマスタ情報でコピーフラグfalse の場合に、地物の登録・編集等の操作ができない不具合修正。
+メニューボタンで無効な設定をした場合に潰れたボタンが表示されないように修正。
+Google Maps API の仕様変更により、Googleレイヤが初期表示できなくなっていたためAPIバージョン指定して修正。
+Google Maps Javascript API の APIバージョン 3.20 が削除されたため、Googleマップが初期表示で表示されない不具合修正。
+ログイン中の自治体が削除された際にエラーとなる不具合を修正.
+地図のPDF出力で、eコミマップ2.4以降でパラメータ指定順が逆になったため、登録情報レイヤが逆順で出力される不具合修正。
+地図ベースレイヤ情報/地図参照レイヤ情報にてレイヤIDの設定がない場合にエラーメッセージを表示するように修正。
+標準地図（地理院タイル）が表示されなくなったため修正（eコミマップの最新プログラムに更新）
+
+○V1.1.3 2015/09/03
+[地図画面]
+・ポップアップにて、グリッドセルの文字列が長い場合、省略していたものを折り返し表示するように変更。
+・タブレットなどのタッチ操作の場合に地図クリックのポップアップが表示されないことがある不具合を修正。
+
+[管理画面]
+・テーブルマスタ情報のSELECTボックスにて削除したものが表示されていた不具合を修正
+・メニュー種別ID23が「【利用不可】公共情報コモンズ（メディア）：国民保護情報」になっているため、「本部設置」に訂正
+
+[自治体セットアッパー]
+・インポートで、フィルタが「フィルタ条件にヒットしない方をグレーアウトにする」の場合にインポートできない不具合を修正。
+・インポートで、DB原因による失敗の場合、詳細なエラーメッセージを画面表示するように修正。
+・インポートで、同じアイコンファイル名の場合、SLDのアイコンパスが更新されない不具合を修正。
+・インポートで、リストアしたマップのタイトルを「自治体名＋マスタマップ」となるように変更。
+・インポートで、システムマスタのインポート後、自治体設定のインポートでエラーとなった場合、
+　シーケンスがリセットされていない不具合修正。
+・インポートで存在しないフィールドはインポート無視するように修正。
+　（推奨設定ファイルのバージョンアップで追加されたフィールドは無視）
+・「ユーザ・メニュー階層」にて削除されたものが表示されていた不具合を修正。
+・「ユーザ・メニュー階層」にて、メニュータスク種別IDのないサブタスクで Null例外がでる不具合を修正。
+
+[その他]
+・災害なしの時に発信画面が表示できない不具合の修正
+・DB自動更新において、現在のDBバージョンよりも前のバージョンファイルが追加された場合に、そのファイルを実行するように変更.
+・「クリアリングハウスURL」のデフォルト設定を空欄に変更。
+
+
+○V1.1.2 2015/08/10
+[地図画面]
+・ 「この場所について」で住所が長いとUTMコードが見れなくなってしまっていたため、スクロールできるように修正。
+・「この場所について」で開いているものがあれば閉じるように修正。
+
+[リスト画面]
+・リストのレコードが0件の場合に、デフォルトソートの設定があるとエラー発生する不具合修正。
+・リスト画面のダウンロードリンクのスタイルを文字色青、下線に変更。
+・リストページでの「写真」ボタンにて、ファイルアップロードボタンが表示されない不具合を修正。
+・平常時のリスト画面でフィルタがされていない不具合を修正。
+
+[4号様式]
+・時間指定の表示で、人的被害(死者・重傷者)がない場合にエラーになる不具合修正。
+・時間指定の表示で、災害発生日時が指定した時間になる不具合修正。
+・様式その１の、死者・不明が値がない場合に空欄になっていたため 0になるように修正。
+・eコミマップDBバージョンの2.1.5使用時に警告を出さないように修正。
+
+[自治体セットアッパー]
+・インポートデータにないマスタテーブルがあるとインポート失敗する不具合修正。
+・システムテーブルが正しくインポートされていない不具合修正。
+・Windows環境でエクスポートすると、アイコンファイルのパスが\になっているためLinux環境にインポートできない不具合を修正。
+・(eコミ不具合修正マージ rev.3337): バックアップと復元のアイコンのパスがグループになるように調整（同じ名前のアイコンは復元せず、カテゴリ分け初期化される）
+・（eコミ不具合修正マージ rev.3464, 3465）[fix] 地図復元処理で主題図のIDが登録情報のシーケンシャルになっていたバグを修正.
+・フィルタ条件のインポート/エクスポートを実装。
+
+[その他]
+・メール通知履歴、情報発信画面が複数同時災害対応していなかったため、ログイン中の災害(trackdata)を記録するように修正。
+・定型文ダイアログの脆弱性対応漏れによる不具合を修正。
+
+○V1.1.1 2015/07/06
+[不具合修正]
+
+・公共情報コモンズ発信画面にて、公共情報コモンズ発信先情報が未設定のとき
+　エラーメッセージを表示するように修正。
+
+・自治体設定のエクスポートで「地図マスタ情報」が設定されていない場合などの
+
+　マスタマップのエクスポート失敗時にエラーメッセージを表示するように修正。
+
+・被災集計機能の過去集計選択時にデバッグアラートが表示されていたため修正。
+
+・監視観測の「データ判定通知情報」設定が管理画面にて重複して表示される不具合修正。
+
+・地図画面での地物登録にてテキストフィールドの入力値がDBに保存されない不具合修正。
+
+○V1.1 2015/04/09
+・都道府県機能
+
+・複数同時災害の対応
+
+・脆弱性対応
+
+○ V1.0 2014/04/01
+・市町村の災害対応機能</description>
+</project>

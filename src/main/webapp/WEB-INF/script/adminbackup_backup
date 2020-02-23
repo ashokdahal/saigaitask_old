@@ -1,0 +1,15 @@
+command=$1
+host=$2
+user=$3
+passwd=$4
+path_and_prefix=$5
+db=$6
+webapps_dir=$7
+geoserver_dir=$8
+#
+cmd1="$command -h $host -U $user -F t -f ${path_and_prefix}_saigaitask2.dmp $db"
+cmd2="gzip ${path_and_prefix}_saigaitask2.dmp"
+cmd3="tar zcf ${path_and_prefix}_webapps_files.tar.gz $webapps_dir"
+cmd4="tar zcf ${path_and_prefix}_geoserver_data_dir.tar.gz $geoserver_dir"
+#
+$cmd1 && $cmd2 && $cmd3 && $cmd4

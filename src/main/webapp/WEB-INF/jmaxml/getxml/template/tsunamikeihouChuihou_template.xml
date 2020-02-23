@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://xml.kishou.go.jp/jmaxml1/" xmlns:jmx="http://xml.kishou.go.jp/jmaxml1/">
+<Control>
+	<Title>ここはタイトル(Control)</Title>
+	<DateTime>ここは発表日時</DateTime>
+</Control>
+<Head xmlns="http://xml.kishou.go.jp/jmaxml1/informationBasis1/">
+	<Title>ここはタイトル(Head)</Title>
+	<Headline>
+	<Text>ここは概況</Text>
+	<Information type="津波予報領域表現">
+	<Item>
+		<Kind>
+			<Name>津波注意報</Name>
+			<Code>62</Code>
+		</Kind>
+		<Areas codeType="津波予報区">
+			<Area>
+				<Name>伊豆諸島</Name>
+				<Code>320</Code>
+			</Area>
+		</Areas>
+	</Item>
+	</Information>
+	</Headline>
+</Head>
+<Body xmlns="http://xml.kishou.go.jp/jmaxml1/body/seismology1/" xmlns:jmx_eb="http://xml.kishou.go.jp/jmaxml1/elementBasis1/">
+	<Tsunami>
+	<Forecast>
+		<CodeDefine>
+			<Type xpath="Item/Area/Code">津波予報区</Type>
+			<Type xpath="Item/Category/Kind/Code">警報等情報要素／津波警報・注意報・予報</Type>
+			<Type xpath="Item/Category/LastKind/Code">警報等情報要素／津波警報・注意報・予報</Type>
+		</CodeDefine>
+		<Item>
+			<Area>
+				<Name>伊豆諸島</Name>
+				<Code>320</Code>
+			</Area>
+			<Category>
+				<Kind>
+					<Name>津波注意報</Name>
+					<Code>62</Code>
+				</Kind>
+				<LastKind>
+					<Name>津波なし</Name>
+					<Code>00</Code>
+				</LastKind>
+			</Category>
+		</Item>
+	</Forecast>
+	</Tsunami>
+</Body>
+</Report>

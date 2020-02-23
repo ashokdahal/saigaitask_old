@@ -1,0 +1,109 @@
+html, body {height:100%; margin: 0 0 0 5px; padding: 0; }
+
+.back {
+ position: fixed;
+ bottom: 10px;
+ right: 5px;
+ padding:2pt;
+ filter:alpha(opacity=85);
+ -moz-opacity:0.85;
+ -khtml-opacity: 0.85;
+ opacity:0.85;
+
+ text-shadow: 0 -1px 1px #FFF, -1px 0 1px #FFF, 1px 0 1px #aaa;
+ -webkit-box-shadow: 1px 1px 2px #E7E7E7;
+ -moz-box-shadow: 1px 1px 2px #E7E7E7;
+ -webkit-border-radius: 3px;
+ -moz-border-radius: 3px;
+}
+
+body#sendInformationbody *{
+	font-size:12px;
+}
+.close {
+	 position: fixed;
+	 top: 0px;
+	 right: 0px;
+}
+div#headerArea {
+    position: fixed !important;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    background-color: #A9A9A9;
+}
+
+.info_table {
+	width:100%;
+}
+
+.info_th{
+	text-align:left;
+}
+table.table01 {
+  margin-top: 0.2em;  margin-bottom: 0em;
+  /*width:450px;*/
+  border-collapse: collapse;
+  border: solid 1px #999;
+  font-size: 12px;
+}
+
+table.table01 caption {
+  margin-top: 1em;
+  text-align: left;
+}
+
+table.table01 th,
+table.table01 td {
+  border: solid 1px #999;
+  padding: 4px 6px;
+}
+
+table.table01 th {
+  background: #E6E6E6;
+  text-align: center;
+  white-space: nowrap;
+  color: #666;
+    font-weight: bolder;
+}
+
+table.table01 td.head {
+  background: #E6E6E6;
+  text-align: center;
+  font-size: 100%;
+  font-weight: bolder;
+}
+
+table.table01 td.time,
+table.table01 td.fee {
+  text-align: right;
+  white-space: nowrap;
+}
+table.table01 select {
+  width: 130px;
+}
+table.table01 select5 {
+  width: 20px;
+}
+div.teikei_title{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-weight: bold;
+	font-size: 18px;
+}
+span.page_title{
+	color: #2E5D99;
+	font-weight: bold;
+}
+table.table_email tr td{
+	padding:3px;
+	font-size:12px;
+	border:0px;
+}
+table.table_pcommonsoption tr td{
+	padding:5px;
+	font-size:12px;
+	border:0px;
+}

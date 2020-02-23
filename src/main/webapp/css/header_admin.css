@@ -1,0 +1,148 @@
+/* Copyright (c) 2013 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+#global_header {
+	overflow: hidden;
+	height: 29px;
+	line-height: 1;
+	font-size: 1px;
+	background-image: url(../images/header/header_bg.gif);
+	background-repeat: repeat-x;
+}
+
+.accordion_head {
+	cursor:pointer;
+	background-color: #595959;
+	background-image: url(../images/header/bu_alertclick_f1.gif);
+	background-repeat: repeat-x;
+	background-position: center 0;
+	height: 20px;
+	width: 100%;
+	overflow: hidden;
+}
+.accordion_head a {
+	display: block;
+	text-indent: -200px;
+	background-position: center -0px; z-index:1;
+	}
+.accordion_head a:hover {
+	cursor:pointer;
+	background-repeat: repeat-x;
+	background-image: url(../images/header/bu_alertclick_f2.gif);
+}
+
+#header { background-Color: #ccc;}
+
+#header-table td {
+	padding: 0px 5px;
+}
+#header-table thead td {
+	font-size: 90%;
+	font-weight: bold;
+}
+#header-table tbody td {
+	background-Color: white;
+	border: 1px solid black;
+}
+
+div#globalnav ul li{
+	list-style: none;
+}
+div#globalnav ul li a {
+	display: block;
+	width: 120px;
+	text-align: center;
+	height: 23px;
+	line-height: 23px;
+	color: #FFF;
+	font-size: 12px;
+	text-indent: 0;
+	text-decoration: none;
+	padding-top: 5px;
+}
+
+div#globalnav ul li#user_header a {
+	display: block;
+	width: 120px;
+	text-align:center;
+	height: 23px;
+	line-height: 23px;
+	color:#FFF;
+	font-size: 12px;
+	text-indent: 0;
+	text-decoration: none;
+	padding-top: 5px;
+}
+.log_menu {
+	display: none;
+	position: absolute; z-index:2;
+	background: #000;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(128,128,128,1)),to(rgba(0,0,0,.7)));
+	background: -moz-linear-gradient(top, rgba(128,128,128,1), rgba(0,0,0,.7));
+	padding: 0 0 5px 0; /* 0 0 10px 0; */
+	border-radius: 0 0 8px 8px;
+	box-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+	zoom: 1;
+}
+
+div#globalnav ul li#user_header .log_menu li a {
+	width: auto;
+	height: auto;
+	/*padding: 10px 30px 5px 40px;*/
+	/*padding: 5px 20px 0px 40px;*/
+	padding: 0px 10px 0px 20px;
+	background: url(../images/common/global_nav/global_nav_menu_arrow.png) 28px 12px no-repeat;
+	text-indent: inherit;
+	text-decoration: underline;
+	/*font-size: 13px;*/
+	font-size: 11px;
+color: #fff;
+}
+div#globalnav ul li#user_header a {
+	display: block;
+	width: 120px;
+	text-align:center;
+	height: 23px;
+	line-height: 23px;
+	color:#FFF;
+	font-size: 12px;
+	text-indent: 0;
+	text-decoration: none;
+	padding-top: 5px;
+}
+#user_header.current a,
+#user_header.hover a,
+#user_header a:hover {
+	text-align:center;
+	background-color: #666;
+	color:#EEE;
+	font-size: 12px;
+	text-decoration: none;
+}
+div#globalnav ul li#user_header .log_menu li, div#globalnav ul li#user_header .log_menu li a {
+	/*width:140px;*/
+	/*padding:0;*/
+	text-decoration:underline;
+}
+div#globalnav ul li#user_header .log_menu {
+	/*width:140px;*/
+	width:120px;
+}
+div#globalnav ul li#user_header .log_menu li a:hover {
+	background-color: #444;
+}
+
+.menu_arrow{
+	background-image: url(../images/common/global_nav/global_nav_menu_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	padding-left: 12px;
+}
+.menu_arrowd{
+	background-image: url(../images/common/global_nav/global_nav_menu_arrowd.png);
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	padding-left: 12px;
+}

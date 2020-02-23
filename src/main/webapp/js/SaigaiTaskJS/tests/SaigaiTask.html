@@ -1,0 +1,60 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel="stylesheet" type="text/css" href="/SaigaiTask/extjs/resources/css/ext-all.css"/>
+		<link rel="stylesheet" type="text/css" href="/SaigaiTask/assets2/css/thickbox.css" />
+		<link rel='stylesheet' type='text/css' href="../css/map.css"/>
+		<script type="text/javascript" src="/SaigaiTask/assets2/js/jquery.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/assets2/js/thickbox.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/extjs/ext-all.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/extjs/locale/ext-lang-ja.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/js/OpenLayers/lib/OpenLayers.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/js/OpenLayers/lib/deprecated.js"></script>
+		<!-- 電子国土 -->
+		<script type="text/javascript" src="http://portal.cyberjapan.jp/sys/v4/webtis/webtis_v4.js" charset="UTF-8"></script>
+		<link rel="stylesheet" type="text/css" href="http://portal.cyberjapan.jp/sys/v4/css/webtis.css">
+		<script type="text/javascript" src="STLoader.js"></script>
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript">
+		$(function(){
+			var map = window.map = new Map("map", {
+				contextPath: "/SaigaiTask",
+				showLegend: true,
+				epsg: 4326//900913
+			});
+
+			map.events.on({
+				"loadendecommap": function(ecommap){
+					// ズームボタンをズームバーに変更する.
+					if(map.controls.panZoom!=null) {
+						map.map.removeControl(map.controls.panZoom);
+						map.controls.panZoom.destroy();
+						map.controls.panZoom = null;
+						var panZoomBar = new OpenLayers.Control.PanZoomBar();
+						Map.extendZoomWorld(panZoomBar);
+						map.addControl(panZoomBar, "panZoomBar");
+					}
+				}
+			});
+
+			map.events.on({
+				"beforeaddlegend": function(evt) {
+					var legend = evt.legend;
+					if(legend.region!="west") {
+						// 凡例を左に移動する
+						legend.region = "west";
+						legend.margin = 0;
+					}
+				}
+			});
+
+			map.loadEcommap(45);
+			//map.loadEcommap(15);
+
+		});
+		</script>
+	</head>
+	<body>
+		<div id="map"><!-- 空欄 --></div>
+	</body>
+</html>

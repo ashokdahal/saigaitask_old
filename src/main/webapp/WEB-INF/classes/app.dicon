@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components PUBLIC "-//SEASAR//DTD S2Container 2.4//EN"
+	"http://www.seasar.org/dtd/components24.dtd">
+<components>
+  <include path="convention.dicon"/>
+  <include path="aop.dicon"/>
+  <include path="j2ee.dicon"/>
+  <include path="s2jdbc.dicon"/>
+  <component name="actionMessagesThrowsInterceptor" class="org.seasar.struts.interceptor.ActionMessagesThrowsInterceptor"/>
+  <component name="initService" class="jp.ecom_plat.saigaitask.service.InitService">
+      <initMethod name="init">
+          <!-- dbMigration --><arg>true</arg>
+      </initMethod>
+      <destroyMethod name="destroy" />
+  </component>
+  <!-- 【注意】 component は InitService より後に登録すること! -->
+  <!-- JSTL 定数レジスターのコンポーネント登録 -->
+  <component class="jp.ecom_plat.saigaitask.util.JSTLConstantRegister" />
+  <!-- 気象庁XML取得 -->
+  <component name="meteoricAlarmService" class="jp.ecom_plat.saigaitask.service.MeteoricAlarmService">
+      <initMethod name="init">
+          <arg>true</arg>
+      </initMethod>
+      <destroyMethod name="destroy" />
+  </component>
+<!-- 
+  <component name="jalertAlarmService" class="jp.ecom_plat.saigaitask.service.JAlertAlarmService">
+      <initMethod name="init">
+          <arg>false</arg>
+      </initMethod>
+      <destroyMethod name="destroy" />
+  </component>
+  <component name="telemeterService" class="jp.ecom_plat.saigaitask.service.TelemeterService">
+      <initMethod name="init">
+          <arg>false</arg>
+      </initMethod>
+      <destroyMethod name="destroy" />
+  </component>
+  <component name="riskJudgeService" class="jp.ecom_plat.saigaitask.service.RiskJudgeService">
+      <initMethod name="init">
+          <arg>false</arg>
+      </initMethod>
+      <destroyMethod name="destroy" />
+  </component>
+ -->
+  <component name="saigaiTaskActionInterceptor" class="jp.ecom_plat.saigaitask.interceptor.ActionInterceptor" />
+</components>

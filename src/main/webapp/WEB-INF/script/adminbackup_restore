@@ -1,0 +1,22 @@
+command=$1
+host=$2
+user=$3
+passwd=$4
+path_and_prefix=$5
+db=$6
+webapps_dir=$7
+geoserver_dir=$8
+#
+cmd1="gunzip -c ${path_and_prefix}_saigaitask2.dmp.gz"
+cmd2="$command -h $host -U $user -d $db -Ft -c ${path_and_prefix}_saigaitask2.dmp"
+cmd3="rm -f ${path_and_prefix}_saigaitask2.dmp"
+cmd4="tar zxf ${path_and_prefix}_webapps_files.tar.gz -C /"
+cmd5="tar zxf ${path_and_prefix}_geoserver_data_dir.tar.gz -C /"
+#
+$cmd1 > ${path_and_prefix}_saigaitask2.dmp
+$cmd2 2> /dev/null 1> ${path_and_prefix}_error.lst
+warn_count=`egrep "(WARNING: errors ignored on restore:|警告: リストアにてエラーを無視しました:)" ${path_and_prefix}_error.lst|wc|awk '{print $1}'`
+all_count=`wc ${path_and_prefix}_error.lst|awk '{print $1}'`
+if [ $all_count -gt 0 -a $warn_count -eq 0 ] ; then cat ${path_and_prefix}_error.lst; exit 1; fi
+#
+$cmd3 && $cmd4 && $cmd5

@@ -1,0 +1,161 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel='stylesheet' type='text/css' href="../css/map.css"/>
+		<script type="text/javascript" src="/SaigaiTask/assets2/js/jquery.js"></script>
+		<!--
+			OpenLayers 2.11 以降だと webtis_v4.js で使用する
+			OpenLayers.Geometry.Rectangle は廃止されている。
+			2.11以降の場合は deprecated.js のインクルードが必要。
+		-->
+		<script type="text/javascript" src="/SaigaiTask/js/OpenLayers/OpenLayers.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/js/OpenLayers/lib/deprecated.js"></script>
+		<!-- 電子国土 -->
+		<script type="text/javascript" src="http://portal.cyberjapan.jp/sys/v4/webtis/webtis_v4.js" charset="UTF-8"></script>
+		<link rel="stylesheet" type="text/css" href="http://portal.cyberjapan.jp/sys/v4/css/webtis.css">
+		<script type="text/javascript" src="STLoader.js"></script>
+	</head>
+	<body>
+		<div id="map"></div>
+	</body>
+	<script type="text/javascript">
+		var map = new Map("map", {
+			contextPath: "/SaigaiTask",
+			// 電子国土は spherical mercator
+			epsg: 900913
+		});
+
+		// 帰属先の表示は必須
+		map.addControl(new OpenLayers.Control.Attribution());
+		map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+		var layerInfos =[{
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"wmsFormat" : "image/png",
+				"type" : 1160,
+				"layerId" : "wms610",
+				"description" : "",
+				"name" : "電子国土基本図",
+				"maxScale" : 0,
+				"wmsURL" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"ownerMapId" : 45,
+				"attribution" : "国土地理院"
+		}, {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "JAIS,BAFD1000K,BAFD200K,DJBMO,FGD",
+				"wmsFormat" : "image/png",
+				"type" : 1160,
+				"layerId" : "wms610",
+				"description" : "",
+				"name" : "電子国土基本図(オルソ画像)",
+				"maxScale" : 0,
+				"wmsURL" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"ownerMapId" : 45,
+				"attribution" : "国土地理院"
+		}, {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "JAIS,BAFD1000K,BAFD200K,TOHO1,FGD",
+				"wmsFormat" : "image/png",
+				"type" : 1160,
+				"layerId" : "wms610",
+				"description" : "",
+				"name" : "東日本大震災被災直後写真",
+				"maxScale" : 0,
+				"wmsURL" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"ownerMapId" : 45,
+				"attribution" : "国土地理院"
+		}, {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "JAIS,BAFD1000K,BAFD200K,TOHO2,TOHO2",
+				"wmsFormat" : "image/png",
+				"type" : 1160,
+				"layerId" : "wms610",
+				"description" : "",
+				"name" : "東日本大震災被災地復興写真",
+				"maxScale" : 0,
+				"wmsURL" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"ownerMapId" : 45,
+				"attribution" : "国土地理院"
+		}, {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "JAIS,BAFD1000K,BAFD200K,NLII4,FGD",
+				"wmsFormat" : "image/png",
+				"type" : 1160,
+				"layerId" : "wms610",
+				"description" : "",
+				"name" : "1988～90年航空写真",
+				"maxScale" : 0,
+				"wmsURL" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"ownerMapId" : 45,
+				"attribution" : "国土地理院"
+		}, {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "JAIS,BAFD1000K,BAFD200K,NLII3,FGD",
+				"wmsFormat" : "image/png",
+				"type" : 1160,
+				"layerId" : "wms610",
+				"description" : "",
+				"name" : "1984～87年航空写真",
+				"maxScale" : 0,
+				"wmsURL" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"ownerMapId" : 45,
+				"attribution" : "国土地理院"
+		}, {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "JAIS,BAFD1000K,BAFD200K,NLII2,FGD",
+				"wmsFormat" : "image/png",
+				"type" : 1160,
+				"layerId" : "wms610",
+				"description" : "",
+				"name" : "1979～83年航空写真",
+				"maxScale" : 0,
+				"wmsURL" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"ownerMapId" : 45,
+				"attribution" : "国土地理院"
+		}, {
+				"scale" : 0,
+				"visibility" : true,
+				"status" : 1,
+				"ownerId" : 1,
+				"featuretypeId" : "JAIS,BAFD1000K,BAFD200K,NLII1,FGD",
+				"wmsFormat" : "image/png",
+				"type" : 1160,
+				"layerId" : "wms610",
+				"description" : "",
+				"name" : "1974～78年航空写真",
+				"maxScale" : 0,
+				"wmsURL" : "JAIS,BAFD1000K,BAFD200K,DJBMM,FGD",
+				"ownerMapId" : 45,
+				"attribution" : "国土地理院"
+		}];
+
+		for(var idx in layerInfos) {
+			map.addBaseLayer(layerInfos[idx]);
+		}
+
+		map = map.map;
+		map.setCenter(new OpenLayers.LonLat(140.1,36.1).transform(new OpenLayers.Projection("EPSG:4326"),map.getProjectionObject()), 8);
+	</script>
+</html>

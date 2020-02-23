@@ -1,0 +1,94 @@
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<link rel='stylesheet' type='text/css' href="../css/map.css"/>
+		<script type="text/javascript" src="/SaigaiTask/assets2/js/jquery.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/js/OpenLayers/OpenLayers.js"></script>
+		<script type="text/javascript" src="/SaigaiTask/js/OpenLayers/lib/deprecated.js"></script>
+		<!-- 電子国土 -->
+		<script type="text/javascript" src="http://portal.cyberjapan.jp/sys/v4/webtis/webtis_v4.js" charset="UTF-8"></script>
+		<link rel="stylesheet" type="text/css" href="http://portal.cyberjapan.jp/sys/v4/css/webtis.css">
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+		<script type="text/javascript" src="STLoader.js"></script>
+	</head>
+	<body>
+		<div id="map"></div>
+	</body>
+	<script type="text/javascript">
+		var map = new Map("map", {
+			contextPath: "/SaigaiTask",
+			epsg: 4326
+		});
+
+		map.addControl(new OpenLayers.Control.LayerSwitcher());
+
+		var layerInfos = [{
+			"scale" : 0,
+			"visibility" : false,
+			"status" : 1,
+			"ownerId" : 1,
+			"featuretypeId" : "DEFAULT",
+			"wmsFormat" : "image/png",
+			"type" : 1155,
+			"layerId" : "wms609",
+			"description" : "",
+			"name" : "GoogleMaps 地図",
+			"maxScale" : 0,
+			"wmsURL" : "DEFAULT",
+			"ownerMapId" : 45,
+			"attribution" : ""
+		}, {
+			"scale" : 0,
+			"visibility" : false,
+			"status" : 1,
+			"ownerId" : 1,
+			"featuretypeId" : "SATELLITE",
+			"wmsFormat" : "image/png",
+			"type" : 1155,
+			"layerId" : "wms609",
+			"description" : "",
+			"name" : "GoogleMaps 航空写真",
+			"maxScale" : 0,
+			"wmsURL" : "SATELLITE",
+			"ownerMapId" : 45,
+			"attribution" : ""
+		}, {
+			"scale" : 0,
+			"visibility" : false,
+			"status" : 1,
+			"ownerId" : 1,
+			"featuretypeId" : "HYBRID",
+			"wmsFormat" : "image/png",
+			"type" : 1155,
+			"layerId" : "wms609",
+			"description" : "",
+			"name" : "GoogleMaps 航空写真＋地図",
+			"maxScale" : 0,
+			"wmsURL" : "HYBRID",
+			"ownerMapId" : 45,
+			"attribution" : ""
+		}, {
+			"scale" : 0,
+			"visibility" : false,
+			"status" : 1,
+			"ownerId" : 1,
+			"featuretypeId" : "PHYSICAL",
+			"wmsFormat" : "image/png",
+			"type" : 1155,
+			"layerId" : "wms609",
+			"description" : "",
+			"name" : "GoogleMaps 地形",
+			"maxScale" : 0,
+			"wmsURL" : "PHYSICAL",
+			"ownerMapId" : 45,
+			"attribution" : ""
+		}];
+
+		for(var idx in layerInfos) {
+			map.addBaseLayer(layerInfos[idx]);
+		}
+
+		map = map.map;
+		map.setCenter(new OpenLayers.LonLat(140.1,36.1).transform(new OpenLayers.Projection("EPSG:4326"),map.getProjectionObject()), 8);
+	</script>
+</html>

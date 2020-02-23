@@ -1,0 +1,310 @@
+/******************  ページ全般のスタイル  *******************************/
+.rightList {
+	/*width:63%;*/
+	font-size:12px;
+	color:#333333;
+	padding:0px;
+}
+/* tableの名称部 */
+div.table_title{
+	/*border-bottom:1px solid #84B2E0;*/
+	color:#006633;
+	float:left;
+	width:45%;
+	margin:10px 0 0 10px;
+	font-size:18px;
+}
+/* tableのボタン部 */
+div.table_button{
+	float:left;
+	width:45%;
+	text-align:right;
+}
+/* 基本設定のレイアウト */
+.basicRightDiv{
+	float:left;
+	width:60%;
+	text-align:left;
+}
+.basicLeftDiv{
+	float:left;
+	width:35%;
+	margin:3px 0 3px 0;
+	padding-top:3px;
+	text-align:left;
+}
+#planName, #meteoName, #meteoNote {
+	width:90%;
+	margin:1px;
+}
+#planNote{
+	width:90%;
+	height:58px;
+	margin:1px;
+}
+#planDisaster {
+	width:90%;
+	margin:1px;
+}
+/* 各ページのタイトル部 */
+div.page_title{
+	color:#006633;
+	margin:10px auto;
+	font-size:18px;
+}
+.textLeft{
+	text-align:left;
+}
+.textRight{
+	text-align:right;
+}
+.textCenter{
+	text-align:center;
+}
+#leftPlanList li{
+	cursor: pointer;
+}
+/******************  ページ全般のスタイルここまで *******************************/
+/******************  table-sorter関連のスタイル  *******************************/
+table.tablesorter-green {
+	width: 100%;
+	text-align: left;
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	border-collapse: separate;
+	border-spacing: 1pt;
+	empty-cells: show;
+}
+table.tablesorter-green thead tr th, table.tablesorter-green tfoot tr th {
+	/*background-color: #e6EEEE;*/
+	background-color: #009000;
+	border: 1px solid #FFF;
+	font-size: 10pt;
+	padding: 3px;
+	color: white;
+	font-weight:bold;
+	text-align: center;
+}
+table.tablesorter-green thead tr .header {
+	background-image: url(./jquery.tablesorter/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter-green tbody td {
+	color: #007000;
+	padding: 4px;
+	background-color: #FFF;
+	vertical-align: top;
+	/*text-align: center;*/
+	max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+table.tablesorter-green thead th.highlight, table.tablesorter-green tbody td.highlight {
+	border: 1px #ff0000 solid;
+}
+table.tablesorter-green thead tr .headerSortUp {
+	background-image: url(./jquery.tablesorter/asc.gif);
+}
+table.tablesorter-green thead tr .headerSortDown {
+	background-image: url(./jquery.tablesorter/desc.gif);
+}
+/* Zebra Widget - row alternating colors */
+.tablesorter-green tbody tr.odd td {
+	background-color: #ebfaeb;
+}
+.tablesorter-green tbody tr.even td {
+	background-color: #fff;
+}
+.tablesorter-green tbody > tr:hover > td,
+.tablesorter-green tbody > tr:hover + tr.tablesorter-childRow > td,
+.tablesorter-green tbody > tr:hover + tr.tablesorter-childRow + tr.tablesorter-childRow > td,
+.tablesorter-green tbody > tr.even:hover > td,
+.tablesorter-green tbody > tr.even:hover + tr.tablesorter-childRow > td,
+.tablesorter-green tbody > tr.even:hover + tr.tablesorter-childRow + tr.tablesorter-childRow > td {
+	/*background: #d9d9d9;*/
+	background:#a8eca8;
+}
+.tablesorter-green tbody > tr.odd:hover > td,
+.tablesorter-green tbody > tr.odd:hover + tr.tablesorter-childRow > td,
+.tablesorter-green tbody > tr.odd:hover + tr.tablesorter-childRow + tr.tablesorter-childRow > td {
+	/*background: #bfbfbf;*/
+	background:#a8eca8;
+}
+/** table-sorter green ここまで */
+
+/** table-sorter blue */
+table.tablesorter-blue {
+	width: 100%;
+	text-align: left;
+	font-family:arial;
+	background-color: #CDCDCD;
+	margin:10px 0pt 15px;
+	font-size: 8pt;
+	border-collapse: separate;
+	border-spacing: 1pt;
+	empty-cells: show;
+}
+table.tablesorter-blue thead tr th, table.tablesorter-blue tfoot tr th {
+	/*background-color: #e6EEEE;*/
+	background-color: #99bfe6;
+	border: 1px solid #cdcdcd;
+	font-size: 10pt;
+	padding: 3px;
+	color: #000000;
+	font-weight:bold;
+	text-align: center;
+	text-shadow: 0 1px 0 rgba(204, 204, 204, 0.7);
+}
+table.tablesorter-blue thead tr .header {
+	background-image: url(./jquery.tablesorter/bg.gif);
+	background-repeat: no-repeat;
+	background-position: center right;
+	cursor: pointer;
+}
+table.tablesorter-blue tbody td {
+	color: #000000;
+	padding: 8px 4px 8px 4px;
+	/*background-color: #99bfe6;*/
+	background-color: #FFFFFF;
+	vertical-align: top;
+	/*text-align: center;*/
+	max-width: 130px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+table.tablesorter-blue thead th.highlight, table.tablesorter-blue tbody td.highlight {
+	border: 1px #ff0000 solid;
+}
+table.tablesorter-blue thead tr .headerSortUp {
+	background-image: url(jquery.tablesorter/asc.gif);
+}
+table.tablesorter-blue thead tr .headerSortDown {
+	background-image: url(jquery.tablesorter/desc.gif);
+}
+/* Zebra Widget - row alternating colors */
+.tablesorter-blue tr.odd td {
+	background-color: #ebf2fa;
+}
+.tablesorter-blue tr.even td {
+	background-color: #fff;
+}
+/* hovered row colors
+ you'll need to add additional lines for
+ rows with more than 2 child rows
+ */
+.tablesorter-blue tbody > tr:hover > td,
+.tablesorter-blue tbody > tr:hover + tr.tablesorter-childRow > td,
+.tablesorter-blue tbody > tr:hover + tr.tablesorter-childRow + tr.tablesorter-childRow > td,
+.tablesorter-blue tbody > tr.even:hover > td,
+.tablesorter-blue tbody > tr.even:hover + tr.tablesorter-childRow > td,
+.tablesorter-blue tbody > tr.even:hover + tr.tablesorter-childRow + tr.tablesorter-childRow > td {
+	background: #d9d9d9;
+}
+.tablesorter-blue tbody > tr.odd:hover > td,
+.tablesorter-blue tbody > tr.odd:hover + tr.tablesorter-childRow > td,
+.tablesorter-blue tbody > tr.odd:hover + tr.tablesorter-childRow + tr.tablesorter-childRow > td {
+	background: #bfbfbf;
+}
+/** table-sorter blue ここまで */
+/******************  table-sorter関連のスタイル ここまで  ***************************/
+
+/******************  CSS Button関連のスタイル  *******************************/
+.green-white-button{ color:#ffffff; padding: 8px 15px; font-weight: bold; line-height: 120%; letter-spacing:2px; text-align: center; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; border:1px solid #74b807; padding:9px 18px; text-decoration:none; background:-moz-linear-gradient( center top, #89c403 5%, #77a809 100% ); background:-ms-linear-gradient( top, #89c403 5%, #77a809 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#89c403', endColorstr='#77a809'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #89c403), color-stop(100%, #77a809) ); background-color:#89c403; color:#ffffff; display:inline-block; text-shadow:1px 1px 0px #528009; -webkit-box-shadow:inset 1px 1px 0px 0px #a4e271; -moz-box-shadow:inset 1px 1px 0px 0px #a4e271; box-shadow:inset 1px 1px 0px 0px #a4e271;}
+.green-white-button:hover { background:-moz-linear-gradient( center top, #77a809 5%, #89c403 100% ); background:-ms-linear-gradient( top, #77a809 5%, #89c403 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#77a809', endColorstr='#89c403'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #77a809), color-stop(100%, #89c403) ); background-color:#77a809;}
+.green-white-button:active { position:relative; top:1px;}
+
+.black-lightblue-button { font-weight:bold; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; border:1px solid #469df5; padding:8px 15px; text-decoration:none; background:-moz-linear-gradient( center top, #79bbff 5%, #4197ee 100% ); background:-ms-linear-gradient( top, #79bbff 5%, #4197ee 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#79bbff', endColorstr='#4197ee'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #79bbff), color-stop(100%, #4197ee) ); background-color:#79bbff; color:#FFFFFF; display:inline-block;  -webkit-box-shadow:inset 1px 1px 0px 0px #cae3fc;  -moz-box-shadow:inset 1px 1px 0px 0px #cae3fc;  box-shadow:inset 1px 1px 0px 0px #cae3fc; }
+.black-lightblue-button:hover { background:-moz-linear-gradient( center top, #4197ee 5%, #79bbff 100% ); background:-ms-linear-gradient( top, #4197ee 5%, #79bbff 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#4197ee', endColorstr='#79bbff'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #4197ee), color-stop(100%, #79bbff) ); background-color:#4197ee; }
+.black-lightblue-button:active { position:relative; top:1px; }
+
+.orange-brown-button { padding:8px 15px; font-weight:bold; line-height:120%; letter-spacing:2px; text-align:center; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; border:1px solid #ffaa22; padding:9px 18px; text-decoration:none; background:-moz-linear-gradient( center top, #ffec64 5%, #ffab23 100% ); background:-ms-linear-gradient( top, #ffec64 5%, #ffab23 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffec64', endColorstr='#ffab23'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #ffec64), color-stop(100%, #ffab23) ); background-color:#ffec64; color:#333333; display:inline-block; text-shadow:1px 1px 0px #ffee66;  -webkit-box-shadow:inset 1px 1px 0px 0px #fff6af;  -moz-box-shadow:inset 1px 1px 0px 0px #fff6af;  box-shadow:inset 1px 1px 0px 0px #fff6af; }
+.orange-brown-button:hover { cursor:pointer; background:-moz-linear-gradient( center top, #ffab23 5%, #ffec64 100% ); background:-ms-linear-gradient( top, #ffab23 5%, #ffec64 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffab23', endColorstr='#ffec64'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #ffab23), color-stop(100%, #ffec64) ); background-color:#ffab23; }
+.orange-brown-button:active { position:relative; top:1px; }
+
+.white-red-button { letter-spacing:1px; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; border:1px solid #d02718; padding:9px 18px; text-decoration:none; background:-moz-linear-gradient( center top, #f24537 5%, #c62d1f 100% ); background:-ms-linear-gradient( top, #f24537 5%, #c62d1f 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#f24537', endColorstr='#c62d1f'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #f24537), color-stop(100%, #c62d1f) ); background-color:#f24537; color:#ffffff; display:inline-block;  -webkit-box-shadow:inset 1px 1px 0px 0px #f5978e;  -moz-box-shadow:inset 1px 1px 0px 0px #f5978e;  box-shadow:inset 1px 1px 0px 0px #f5978e; }
+.white-red-button:hover { cursor:pointer; background:-moz-linear-gradient( center top, #c62d1f 5%, #f24537 100% ); background:-ms-linear-gradient( top, #c62d1f 5%, #f24537 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#c62d1f', endColorstr='#f24537'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #c62d1f), color-stop(100%, #f24537) ); background-color:#c62d1f; }
+.white-red-button:active { position:relative; top:1px; }
+
+.white-gray-button { padding:8px 15px; font-weight: bold; line-height:120%; letter-spacing:2px; text-align:center; -moz-border-radius:8px; -webkit-border-radius:8px; border-radius:8px; border:1px solid #dcdcdc; text-decoration:none; background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% ); background:-ms-linear-gradient( top, #ededed 5%, #dfdfdf 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #ededed), color-stop(100%, #dfdfdf) ); background-color:#ededed; color:#444444; display:inline-block; text-shadow:1px 1px 0px #ffffff;  -webkit-box-shadow:inset 1px 1px 0px 0px #ffffff;  -moz-box-shadow:inset 1px 1px 0px 0px #ffffff;  box-shadow:inset 1px 1px 0px 0px #ffffff;}
+.white-gray-button:hover { cursor: pointer; background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% ); background:-ms-linear-gradient( top, #dfdfdf 5%, #ededed 100% ); filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed'); background:-webkit-gradient( linear, left top, left bottom, color-stop(5%, #dfdfdf), color-stop(100%, #ededed) ); background-color:#dfdfdf; font-weight: bold; }
+.white-gray-button:active { position:relative; top:1px; font-weight: bold; }
+/******************  CSS Button関連のスタイル ここまで  ***************************/
+
+/******************  左手プランリスト関連のスタイル  *******************************/
+.leftList {
+	font-size:12px;
+	color:#333333;
+	backgroud-color:#D6E5F5;
+	padding:0px;
+	letter-spacing:1px;
+	line-height:120%;
+}
+#leftListTitle {
+	font-size:14px;
+	color:#333333;
+	text-decoration:underline;
+}
+.leftList ul{
+	padding-top:8px;
+}
+.leftList li {
+	list-style-type:none;
+	padding:5px 10px;
+	border-top:1px soild #F1F6FC;
+	border-bottom:1px solid #84B2E0;
+}
+.leftList li a{
+	text-decoration:none;
+	color:#F52222;
+	cursor:pointer;
+}
+/* 1つ目のリストの上側のラインを消す */
+.leftList li:first-child {
+	border-top:0px;
+}
+/* 最後のリストの下側のラインを消す */
+.leftList li:last-child {
+	border-top:0px;
+}
+/* 設定メニュー */
+.leftList dl {
+	margin-left:10px;
+	padding:5px 10px;
+	border-top:1px soild #F1F6FC;
+	border-bottom:1px solid #84B2E0;
+	cursor:pointer;
+}
+/* 1つ目のリストの上側のラインを消す */
+.leftList dl:first-child {
+	border-top:0px;
+}
+/* 最後のリストの下側のラインを消す */
+.leftList dl:last-child {
+	border-top:0px;
+}
+/* 左手リストの選択色 */
+.selectRed {
+	color:#FF0000;
+	font-weight:bold;
+}
+/* 左手リストの未選択色 */
+.noSelectGray{
+	color:#333333;
+	font-weight:normal;
+}
+/******************  左手プランリスト関連のスタイルここまで  *******************************/
+
+#external-bousaixmlfiles-dialog-content table{
+	font-size:12px;
+	border:none;
+}
+#external-bousaixmlfiles-dialog-content tr{
+	margin-bottom:2px;
+}
+

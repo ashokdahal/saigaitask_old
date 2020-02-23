@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Report xmlns="http://xml.kishou.go.jp/jmaxml1/" xmlns:jmx="http://xml.kishou.go.jp/jmaxml1/">
+  <Control>
+    <Title>ここはタイトル(Control)</Title>
+    <DateTime>ここは発表日時</DateTime>
+  </Control>
+  <Head xmlns="http://xml.kishou.go.jp/jmaxml1/informationBasis1/">
+    <Title>ここはタイトル(Head)</Title>
+    <Headline>
+      <Text>ここは概況</Text>
+      <Information type="震源・震度に関する情報（細分区域）">
+        <Item>
+          <Kind><Name>震度４</Name></Kind>
+          <Areas codeType="地震情報／細分区域">
+            <Area><Name>鹿児島県大隅</Name><Code>771</Code></Area>
+          </Areas>
+        </Item>
+      </Information>
+    </Headline>
+  </Head>
+  <Body xmlns="http://xml.kishou.go.jp/jmaxml1/body/seismology1/" xmlns:jmx_eb="http://xml.kishou.go.jp/jmaxml1/elementBasis1/">
+    <Earthquake>
+      <OriginTime>2010-01-25T16:15:00+09:00</OriginTime>
+      <ArrivalTime>2010-01-25T16:15:00+09:00</ArrivalTime>
+      <Hypocenter>
+        <Area>
+          <Name>ここは震央地名</Name>
+          <Code type="震央地名">820</Code>
+        </Area>
+      </Hypocenter>
+      <jmx_eb:Magnitude type="Mj" description="Ｍ５．３">ここまマグニチュード</jmx_eb:Magnitude>
+    </Earthquake>
+    <Intensity>
+      <Observation>
+        <MaxInt>4</MaxInt>
+        <Pref><Name>鹿児島県</Name><Code>46</Code><MaxInt>4</MaxInt>
+          <Area><Name>鹿児島県大隅</Name><Code>771</Code><MaxInt>4</MaxInt>
+            <City><Name>鹿屋市</Name><Code>4620300</Code><MaxInt>4</MaxInt>
+              <IntensityStation><Name>鹿屋市新栄町</Name><Code>4620300</Code><Int>4</Int></IntensityStation>
+            </City>
+          </Area>
+        </Pref>
+
+      </Observation>
+    </Intensity>
+  </Body>
+</Report>

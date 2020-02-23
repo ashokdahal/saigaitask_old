@@ -1,0 +1,85 @@
+/* Copyright (c) 2013 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+ 
+/*
+ * Print layout Theme
+ *
+ * Created for "list" page.
+ */
+@media print {
+	/** Universal Reset
+	-----------------------------------------*/
+	/* Print CSS backgrounds in Google Chrome(17 or higher) & Safari webkit */
+	/*
+	-webkit-print-color-adjust: exact;
+	*/
+	
+	
+	/** jquery.layout
+	-----------------------------------------*/
+	html, body {
+		/* NEUTRALIZE 'layout container' styles */
+		overflow:	visible 	!important;
+		width:	auto		!important;
+		height:	auto		!important;
+		position:	static	!important;
+		
+		background-color: #FFFFFF	!important;
+	}
+	.ui-layout-pane ,
+	.ui-layout-resizer ,
+	.ui-layout-toggler {
+		/* NEUTRALIZE 'layout element' styles */
+		display:	none		!important; /* hide ALL by default */
+		position:	relative	!important;
+		top:		auto		!important;
+		bottom:	auto		!important;
+		left:	auto		!important;
+		right:	auto		!important;
+		width:	auto		!important;
+		height:	auto		!important;
+		overflow:	visible	!important;
+	}
+	/* SHOW ONLY the panes you want */
+	.ui-layout-pane-center {
+		display:	block	!important;
+		/* OPTIONAL: change cosmetic styles as desired */
+		border:		0px			!important;
+		padding:		0px			!important;
+		background:	transparent	!important;
+	}
+	
+	
+	/** jquery.tablesorter
+	-----------------------------------------*/
+	table.tablesorter {
+		border-collapse: collapse	!important;
+	}
+	table.tablesorter thead tr th, table.tablesorter thoot tr th {
+		color: #000000				!important;
+		border: 1px solid #CDCDCD 	!important;
+		/*
+		border-width: 1px 1px 2px		!important;
+		border-style: solid solid double	!important;
+		border-color: #CDCDCD			!important;
+		*/
+	}
+	table.tablesorter tbody td {
+		border: 1px solid #CDCDCD	!important;
+	}
+	/*
+	#focusBorder-top, #focusBorder-right, #focusBorder-bottom, #focusBorder-left { display: none	!important; }
+	*/
+	/*
+	#copyBorder-top, #copyBorder-right, #copyBorder-bottom, #copyBorder-left { display: none	!important; }
+	*/
+	
+	
+	/** jquery-ui
+	-----------------------------------------*/
+	.ui-dialog { display: none	!important; }
+	
+}

@@ -1,0 +1,19 @@
+#wrapper {
+    top:0px;
+    bottom:0px;
+}
+body {
+	margin: 0 auto;
+}
+h1 {
+ background-color: #191970;
+ color: #ffffff;
+ font-size: 120%;
+ padding: 0px;
+ text-align: center;
+ margin-top:0px;
+ margin-bottom: 0px;
+}
+p {
+ text-align: right;
+}

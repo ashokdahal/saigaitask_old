@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Spring Boot では基本的には web.xml は不要だが、
+	組み込みTomcatを使わずに、Tomcatへデプロイする場合は jsp-config のために web.xml が必要となる。
+
+	Servlet 3.0+  のため、servletなどの定義は不要
+	@see https://docs.spring.io/spring-boot/docs/current/reference/html/howto-traditional-deployment.html#howto-convert-an-existing-application-to-spring-boot
+
+	Servlet, Listener, Filter はここでは定義せず、Spring Boot の JavaConfigration で定義すること。
+ -->
+<web-app>
+    <jsp-config>
+      <jsp-property-group>
+        <url-pattern>*.jsp</url-pattern>
+        <el-ignored>false</el-ignored>
+        <page-encoding>UTF-8</page-encoding>
+        <scripting-invalid>false</scripting-invalid>
+        <include-prelude>/WEB-INF/view/common/common.jsp</include-prelude>
+        </jsp-property-group>
+    </jsp-config>
+</web-app>

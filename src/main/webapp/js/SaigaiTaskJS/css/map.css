@@ -1,0 +1,363 @@
+/* Copyright (c) 2013 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+@CHARSET "UTF-8";
+
+/* util */
+.left{ float:left }
+.right{ float:right }
+.clear{ clear:both }
+.pointer{ cursor: pointer; }
+
+/*  frame */
+.map{
+	width:  950px;
+	height: 430px;
+	border: 1px solid gray;
+}
+
+/* popup */
+.popup_close_button {
+	background : url(images/close.png) no-repeat right top;
+	position: absolute;
+	top : 2px;
+	right : 2px;
+	height: 12px;
+	width: 12px;
+	cursor: pointer;
+}
+.file-icon {
+	background-image: url(images/application.png);
+	background-repeat: no-repeat;
+}
+
+.search-icon {
+	background-image: url(images/list_search.png);
+	background-repeat: no-repeat;
+	width: 18px;
+	height: 16px;
+}
+
+.map-icon {
+	background-image: url(images/mapfile.gif);
+	background-repeat: no-repeat;
+	width: 21px;
+	height: 18px;
+}
+
+.map-grayscale-icon {
+	background-image: url(images/mapfile_grayscale.gif);
+	background-repeat: no-repeat;
+	width: 21px;
+	height: 18px;
+}
+
+.draw-point-icon {
+	background-image: url(icons/drawpoint-icon.png);
+	background-repeat: no-repeat;
+	width: 10px;
+	height: 16px;
+}
+
+.draw-line-icon {
+	background-image: url(icons/geosilk/line_blue.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+.draw-freeline-icon {
+	background-image: url(icons/freeline.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+.draw-polygon-icon {
+	background-image: url(icons/geosilk/shape_square_blue.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+.draw-circle-icon {
+	background-image: url(icons/shape_circle.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+.draw-text-icon {
+	background-image: url(icons/font.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+.paintcan-icon {
+	background-image: url(icons/paintcan.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+.cursor-icon {
+	background-image: url(icons/cursor.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+.range-icon {
+	background-image: url(icons/range.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.modify-feature-icon {
+	background-image: url(icons/geosilk/shape_square_orange.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.drag-feature-icon {
+	background-image: url(icons/geosilk/pan.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.removeselected-feature-icon {
+	background-image: url(icons/delete.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.removeall-feature-icon {
+	background-image: url(icons/geosilk/vector_delete.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+.intersection-feature-icon {
+	background-image: url(icons/silk/icons/cut.png);
+	background-repeat: no-repeat;
+	width: 16px;
+	height: 16px;
+}
+
+/*
+.popup_pin_button, .popup_pinned_button {
+	position: absolute;
+	top : 2px;
+	right : 18px;
+	height: 12px;
+	width: 12px;
+	cursor: pointer;
+}
+.popup_pin_button {
+	background : url(images/popuppin.png) no-repeat right top;
+}
+.popup_pinned_button {
+	background : #CCCCCC url(images/popuppin.png) no-repeat right top;
+	border-top: 1px solid gray;
+	border-left: 1px solid gray;
+}
+
+.popup_turn_button {
+	background : url(images/popupturn.png) no-repeat right top;
+	position: absolute;
+	top : 2px;
+	right : 34px;
+	height: 12px;
+	width: 12px;
+	cursor: pointer;
+}
+*/
+
+/* Tree Panel */
+.x-tree-panel .x-grid-cell-inner .no-icon{ width: 0px; height: 0px; background-image: none; }
+/* �}��ʂ̕\���֑ؑΉ��F�`�F�b�N�{�b�N�X�ƃe�L�X�g���㉺�������� */
+.legendpanel-legendrule-node.x-grid-cell-treecolumn div.x-grid-cell-inner,
+.legendpanel-legendrule-node.x-grid-cell-treecolumn div.x-grid-cell-inner input {
+	margin: 0;
+	vertical-align: middle;
+	line-height: 34px;
+}
+
+#TB_window, #TB_overlay {
+	z-index: 1500!important;
+}
+
+/* AttrGridPanel */
+.attrgridpanel .highlight .x-grid-cell {
+	background-Color: #ffe2e2;
+	color: #900;
+}
+/*
+ * border�Ńn�C���C�g����ꍇ�̃X�^�C��
+ * ���E�̘g�����܂��w��ł��Ȃ�.
+ */
+/*
+.attrgridpanel .highlight .x-grid-cell .x-grid-cell-inner {
+	border-top: 2px solid red;
+	border-bottom: 2px solid red;
+}
+
+.attrgridpanel .highlight .x-grid-cell-first .x-grid-cell-inner {
+	border-left: 2px solid red;
+}
+.attrgridpanel .highlight .x-grid-cell-last .x-grid-cell-inner {
+	border-right: 2px solid red;
+}
+*/
+
+/* PrintPreviewWindow */
+.printPreviewWindow .first-container {
+	border: 1px solid lightgray;
+	padding: 3px;
+	margin-bottom: 3px;
+}
+
+/* Map */
+div.MapcontrolMousePosition60 {
+    bottom: 0;
+    display: block;
+    font-family: Arial;
+    font-size: smaller;
+    position: absolute;
+    right: 3px;
+}
+
+/* XYZ���C���ŉ摜���\���ł��Ȃ����Ƀs���N�F�̃^�C����\�����Ȃ��悤�ɂ��� */
+.olImageLoadError {
+    display: none;
+}
+
+/* �|�b�v�A�b�v�̃Z���̕�����܂�Ԃ��Ή� */
+.olPopup .x-grid-cell-inner, .olPopup .x-grid-hd-inner {
+  /* �Z���̍ő卂���ƃX�N���[���ݒ� */
+  /*
+  max-height: 50px;
+  overflow-y: auto;
+  */
+
+  /* �Z���̕�����܂�Ԃ��Ή� */
+  white-space: normal; /* changed from nowrap */
+  text-overflow: inherit; /* changed from ellipsis */
+  padding-right: 20px; /*スクロールバーがある場合の見栄え調整*/
+}
+
+/**
+ * メモ描画のテキストメモを選択できないようにする
+ * ※手書き線を入力するときのドラッグで選択されてしまうため
+ */
+.olMap .olLayerDiv svg g text tspan {
+	user-select: none
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* Internet Explorer */
+	-khtml-user-select: none; /* KHTML browsers (e.g. Konqueror) */
+	-webkit-user-select: none; /* Chrome, Safari, and Opera */
+	-webkit-touch-callout: none; /* Disable Android and iOS callouts*/
+}
+
+/* @see /map/map/widgets/memo/memo.css */
+.memo_text_div {
+    position: absolute;
+    z-index: 99999;
+}
+.x-menu .x-menu-item.selected-menu {
+	border: 1px solid red;
+}
+
+
+/* @see ecommap/webapps/map/OpenLayers/Control/ScaleBar.css */
+.olControlScaleBar {
+	bottom: 35px;
+	left: 10px;
+	font-family: sans-serif;
+	color: #000;
+	line-height: 100%;
+	margin: 0;
+	padding: 0;
+}
+.olControlScaleBarBar {
+	height: 1px;
+	top: 14px;
+	background: #333;
+	border-top: 1px solid black;
+	border-bottom: 1px solid #333; /* saigaitask */
+	z-index: 999;
+}
+*:first-child+html .olControlScaleBarBar,
+* html .olControlScaleBarBar {
+	height: 2px;
+}
+
+.olControlScaleBarBarAlt {
+	height: 1px;
+	top: 14px;
+	background: #333;
+	border-top: 1px solid white;
+	border-bottom: 1px solid #333; /* saigaitask */
+	z-index: 999;
+}
+*:first-child+html .olControlScaleBarBarAlt,
+* html .olControlScaleBarBarAlt {
+	height: 2px;
+}
+
+.olControlScaleBarMarkerMajor {
+	height: 7px;
+	width: 1px;
+	top: 11px;
+	background: #333;
+	z-index: 1000;
+}
+
+.olControlScaleBarMarkerMinor {
+	height: 5px;
+	width: 1px;
+	top: 12px;
+	background: #333;
+	z-index: 1000;
+}
+
+.olControlScaleBarNumbersBox, .olControlScaleBarNumbersBoxBg, .olControlScaleBarNumbersBoxBgUp {
+	width: 120px;
+	height: 13px;
+	top: 21px;
+	text-align: left !important;
+	font-size: 9pt;
+	font-weight: bold;
+}
+.olControlScaleBarNumbersBoxBg {
+	top: 22px;
+	color: white;
+}
+.olControlScaleBarNumbersBoxBgUp {
+	top: 20px;
+	color: white;
+}
+
+.olControlScaleBarLabelBox {
+	top: -2px;
+	height: 15px;
+	font-weight: bold;
+	letter-spacing: 0.1em;
+	font-size: 0.7em;
+	font-variant: small-caps;
+}
+.olControlScaleBarLabelBox span {
+	background-color: white;
+	opacity: 0.7;
+}
+
+.olControlScaleBarLabelBoxSingleLine {
+	height: 15px;
+	width: 35px;
+	top: 5px;
+	left: 10px;
+	font-size: 0.7em;
+	font-variant: small-caps;
+}
+/* End of ecommap/webapps/map/OpenLayers/Control/ScaleBar.css */

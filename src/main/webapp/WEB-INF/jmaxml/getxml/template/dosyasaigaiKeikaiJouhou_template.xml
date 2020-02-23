@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://xml.kishou.go.jp/jmaxml1/" xmlns:jmx="http://xml.kishou.go.jp/jmaxml1/">
+  <Control>
+    <Title>ここはタイトル(Control)</Title>
+    <DateTime>ここは発表日時</DateTime>
+  </Control>
+  <Head xmlns="http://xml.kishou.go.jp/jmaxml1/informationBasis1/">
+    <Title>ここはタイトル(Head)</Title>
+    <Headline>
+      <Text>ここは概況</Text>
+      <Information type="土砂災害警戒情報">
+        <Item>
+          <Kind>
+            <Name>警戒</Name>
+            <Code>3</Code>
+            <Condition>発表</Condition>
+          </Kind>
+          <Areas codeType="気象・地震・火山情報／市町村等">
+            <Area>
+              <Name>松前町</Name>
+              <Code>0133100</Code>
+            </Area>
+          </Areas>
+        </Item>
+      </Information>
+    </Headline>
+  </Head>
+  <Body xmlns="http://xml.kishou.go.jp/jmaxml1/body/meteorology1/">
+    <TargetArea>
+      <Name>渡島・檜山地方</Name>
+      <Code>017000</Code>
+    </TargetArea>
+    <Warning type="土砂災害警戒情報">
+      <Item>
+        <Kind>
+          <Name>なし</Name>
+          <Code>0</Code>
+          <Status>なし</Status>
+        </Kind>
+        <Area>
+          <Name>函館市</Name>
+          <Code>0120200</Code>
+        </Area>
+      </Item>
+    </Warning>
+    <OfficeInfo>
+      <Office type="都道府県">
+        <Name>北海道渡島総合振興局</Name>
+        <ContactInfo>0138-47-9640（渡島総合振興局）</ContactInfo>
+      </Office>
+      <Office type="気象庁">
+        <Name>函館地方気象台</Name>
+        <ContactInfo>0138-46-2212（函館地方気象台）</ContactInfo>
+      </Office>
+    </OfficeInfo>
+  </Body>
+</Report>

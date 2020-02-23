@@ -1,0 +1,113 @@
+.badger-outter
+	{
+	background:#fff;
+	border:1px solid #ccc;
+	min-width: 30px;
+	height: 30px;
+	border-radius: 15px;
+	-moz-border-radius: 15px;
+	-webkit-border-radius: 15px;
+	box-shadow:0px 1px 5px #ccc;
+	-moz-box-shadow:0px 1px 5px #ccc;
+	-webkit-box-shadow:0px 1px 5px #ccc;
+	float:left;
+	position:absolute;
+	top:20px;
+	left:5px;
+/*	top:-18px; */
+/*	right:-18px; */
+	z-index:9999;
+}
+.badger-inner
+	{
+	min-width: 24px;
+	height: 24px;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	background: #f13c31;
+	background: -moz-linear-gradient(100% 100% 90deg, #f13c31, #f79690);
+  	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f79690), to(#f13c31));
+  	background: -webkit-linear-gradient(#f79690, #f13c31);
+    background: -o-linear-gradient(#f79690, #f13c31);
+    margin:3px;
+    z-index:99999;
+}
+.badger-badge
+	{
+	color:#fff;
+	padding:3px 2px 2px 2px;
+	margin:0;
+	text-align:center;
+	/*text-shadow:0px -1px 1px #e01b0f;*/
+	/*font-weight:bold;*/
+	font-size:14px;
+/*	font-family:Impact,Charcoal;*/
+	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+	z-index:999999;
+}
+.badger-text
+	{ font-size:18px; }
+.badger-number
+	{ font-size:22px; }
+.badger-outter_header{
+	background:#fff;
+	border:1px solid #ccc;
+	min-width: 26px;
+	height: 26px;
+	border-radius: 13px;
+	-moz-border-radius: 13px;
+	-webkit-border-radius: 13px;
+	box-shadow:0px 1px 5px #ccc;
+	-moz-box-shadow:0px 1px 5px #ccc;
+	-webkit-box-shadow:0px 1px 5px #ccc;
+	float:left;
+	position:absolute;
+	top:-8px;
+	right:-12px;
+/*	top:-18px; */
+/*	right:-18px; */
+	z-index:9999;
+}
+.badger-inner_header{
+	min-width: 20px;
+	height: 20px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	background: #f13c31;
+	background: -moz-linear-gradient(100% 100% 90deg, #f13c31, #f79690);
+  	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f79690), to(#f13c31));
+  	background: -webkit-linear-gradient(#f79690, #f13c31);
+    background: -o-linear-gradient(#f79690, #f13c31);
+    margin:2px;
+    z-index:99999;
+}
+.badger-badge_header{
+	color:#fff;
+	padding:1px;
+	margin:0;
+	text-align:center;
+	/*text-shadow:0px -1px 1px #e01b0f;*/
+	/*font-weight:bold;*/
+	font-size:12px;
+	/*font-family:Impact,Charcoal;*/
+	font-family:'Lucida Grande','Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+	z-index:999999;
+}
+
+.badger-inner-brown
+{
+	min-width: 24px;
+	height: 24px;
+	border-radius: 12px;
+	-moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	background: #990000;
+	background: -moz-linear-gradient(100% 100% 90deg, #990000, #990000);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#990000), to(#990000));
+	background: -webkit-linear-gradient(#990000, #990000);
+	background: -o-linear-gradient(#990000, #990000);
+	margin:3px;
+	z-index:99999;
+}

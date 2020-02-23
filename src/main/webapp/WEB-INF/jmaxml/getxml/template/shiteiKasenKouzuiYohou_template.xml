@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://xml.kishou.go.jp/jmaxml1/" xmlns:jmx="http://xml.kishou.go.jp/jmaxml1/">
+  <Control>
+    <Title>ここはタイトル(Control)</Title>
+    <DateTime>ここは発表日時</DateTime>
+  </Control>
+  <Head xmlns="http://xml.kishou.go.jp/jmaxml1/informationBasis1/">
+    <Title>ここはタイトル(Head)</Title>
+    <Headline>
+      <Text>ここは概況</Text>
+      <Information type="指定河川洪水予報（予報区域）">
+        <Item>
+          <Kind>
+            <Name>はん濫警戒情報</Name>
+            <Code>00</Code>
+            <Condition>洪水警報（発表）</Condition>
+          </Kind>
+          <Areas codeType="指定河川洪水予報（予報区域）">
+            <Area>
+              <Name>○○川上流</Name>
+              <Code>123456789012</Code>
+            </Area>
+          </Areas>
+        </Item>
+      </Information>
+    </Headline>
+  </Head>
+  <Body xmlns="http://xml.kishou.go.jp/jmaxml1/body/meteorology1/" xmlns:jmx_eb="http://xml.kishou.go.jp/jmaxml1/elementBasis1/" />
+</Report>

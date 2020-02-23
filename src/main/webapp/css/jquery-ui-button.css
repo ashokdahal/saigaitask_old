@@ -1,0 +1,24 @@
+.ui-orange-button
+{
+	border: 1px solid #d19405;
+	background: #fece2f url(../images/button/orange/ui-bg_gloss-wave_60_fece2f_500x100.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #4c3000;
+	text-decoration: none;
+}
+.ui-orange-button:hover
+{
+	border: 1px solid #a45b13;
+	background: #ffdd57 url(../images/button/orange/ui-bg_gloss-wave_70_ffdd57_500x100.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #381f00;
+	text-decoration: none;
+}
+.ui-orange-button:active
+{
+	border: 1px solid #655e4e;
+	background: #ffffff url(../images/button/orange/ui-bg_inset-soft_30_ffffff_1x100.png) 50% 50% repeat-x;
+	font-weight: bold;
+	color: #0074c7;
+	text-decoration: none;
+}

@@ -1,0 +1,309 @@
+/* Copyright (c) 2013 National Research Institute for Earth Science and
+ * Disaster Prevention (NIED).
+ * This code is licensed under the GPL version 3 license, available at the root
+ * application directory.
+ */
+
+/*
+ * base.css
+ */
+body{margin: 0; background-Color: #D9D9D9;}
+
+*{padding: 0; margin: 0;}
+
+body,table tr th,table tr td,textarea,p,body div,select,input,button,
+/*reset jquery-UI*/.ui-widget,
+/*reset ExtJS*/.x-window-header-text-default, .x-panel-header-text-default,
+.x-toolbar .x-toolbar-text,
+.x-btn-default-toolbar-small .x-btn-inner,
+.x-btn-default-small .x-btn-inner,
+.x-form-field, .x-form-display-field {
+	font-family:'�q���M�m�p�S Pro W3','Hiragino Kaku Gothic Pro','���C���I',Meiryo,'�l�r �o�S�V�b�N',sans-serif;
+}
+
+/** Information Section
+-----------------------------------------*/
+#info_container {
+	overflow: hidden;
+	padding: 10px 0 0;
+	background: #ccc;
+}
+#info_left {
+	float: left;
+	width: 450px;
+}
+#info_right {
+	float: left;
+	width: 750px;
+}
+
+.info_list_container {
+	overflow: hidden;
+}
+.info_list_container h2 {
+	float: left;
+	width: 80px;
+	padding: 3px 0 0;
+}
+.info_list_container .info_list {
+	float: left;
+	overflow: auto;
+	width: 100%;
+	height: 100px;
+	border: 1px solid #999;
+	background: #fff;
+	font-size: 80%;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 5px;
+	margin-left: 0;
+	padding-top: 0;
+	padding-right: 20px;
+	padding-bottom: 0;
+	padding-left: 15px;
+}
+.info_list ul {
+	padding: 5px 0 0;
+}
+.info_list ul li {
+	padding: 0 0 0 15px;
+}
+.info_list ul li a {
+	/*text-decoration: underline;*/
+	text-decoration: none;
+	color: #000;
+}
+.info_list ul li a:hover {
+	color: #09c;
+}
+
+/* Alarm */
+#info_alarm .info_list {
+	background: #FFEBEE;
+	box-shadow: 1px 1px 5px rgba(0,0,0,0.3) inset;
+}
+#info_alarm ul li {
+	background-image: url(../images/common/global_nav/info_alarm_allow.png);
+	background-repeat: no-repeat;
+	background-position: 0 0.4em;
+}
+
+/* for filtering */
+table.tablesorter tbody tr.gray td {
+/*border: 1px solid #aaaaaa !important;*/
+background-color: #cccccc !important;
+color: #6d6d6d !important;
+}
+table.tablesorter tbody tr.yellow50 td {
+/*border: 1px solid #aaaaaa !important;*/
+background-color: #FAFAD2 !important;
+color: #333333 !important;
+}
+table.tablesorter tbody tr.red50 td {
+/*border: 1px solid #aaaaaa !important;*/
+background-color: #FFC0C0 !important;
+color: #333333 !important;
+}
+
+#menulist li {
+	border: 1px solid gray;
+	margin: 3px;
+	border-radius: 5px;
+}
+
+
+/*
+ * header.css
+ */
+/* �ЊQ���p�w�b�_ */
+#global_header {
+	overflow: hidden;
+	height: 29px;
+	line-height: 1;
+	font-size: 1px;
+	background-image: url(../images/header/header_bg_orange.png);
+	background-repeat: repeat-x;
+}
+/* ���펞�p�w�b�_ */
+#global_header_hei {
+	overflow: hidden;
+	height: 29px;
+	line-height: 1;
+	font-size: 1px;
+	background-image: url(../images/header/header_bg.gif);
+	background-repeat: repeat-x;
+}
+/* �P���p�w�b�_ */
+#global_header_tr {
+	overflow: hidden;
+	height: 29px;
+	line-height: 1;
+	font-size: 1px;
+	background-image: url(../images/header/header_bg_green.png);
+	background-repeat: repeat-x;
+}
+/* �Ǘ���ʗp�w�b�_ */
+#global_header_admin {
+	overflow: hidden;
+	height: 29px;
+	line-height: 1;
+	font-size: 1px;
+	background-color: lightseagreen;
+}
+.shadow {
+	text-shadow: 2px 2px 1px #fff,
+	    -2px 2px 1px #fff,
+	    2px -2px 1px #fff,
+	    -2px -2px 1px #fff;
+}
+#global_header_title {
+	font-size: 16px;
+	color: #000;
+	font-weight: bold;
+	height:inherit;
+	line-height: 29px;
+	margin-left: 5px;
+	vertical-align: middle;
+}
+
+.accordion_head {
+	cursor:pointer;
+	background-color: #595959;
+	background-image: url(../images/header/bu_alertclick_f1.gif);
+	background-repeat: repeat-x;
+	background-position: center 0;
+	height: 20px;
+	width: 100%;
+	overflow: hidden;
+}
+.accordion_head a {
+	display: block;
+	text-indent: -200px;
+	background-position: center -0px; z-index:1;
+	}
+.accordion_head a:hover {
+	cursor:pointer;
+	background-repeat: repeat-x;
+	background-image: url(../images/header/bu_alertclick_f2.gif);
+}
+
+#header { background-Color: #ccc;}
+
+#header-table td {
+	padding: 0px 5px;
+}
+#header-table thead td {
+	font-size: 90%;
+	font-weight: bold;
+}
+#header-table tbody td {
+	background-Color: white;
+	border: 1px solid black;
+}
+
+div#globalnav ul li{
+	list-style: none;
+}
+div#globalnav ul li a {
+	display: block;
+	width: 120px;
+	text-align: center;
+	height: 23px;
+	line-height: 23px;
+	color: #FFF;
+	font-size: 12px;
+	text-indent: 0;
+	text-decoration: none;
+	padding-top: 5px;
+}
+
+div#globalnav ul li#user_header a {
+	display: block;
+	width: 120px;
+	text-align:center;
+	height: 23px;
+	line-height: 23px;
+	color:#FFF;
+	font-size: 12px;
+	text-indent: 0;
+	text-decoration: none;
+	padding-top: 5px;
+}
+.log_menu {
+	display: none;
+	position: absolute; z-index:2;
+	background: #000;
+	background: -webkit-gradient(linear, left top, left bottom, from(rgba(128,128,128,1)),to(rgba(0,0,0,.7)));
+	background: -moz-linear-gradient(top, rgba(128,128,128,1), rgba(0,0,0,.7));
+	padding: 0 0 10px 0;
+	border-radius: 0 0 8px 8px;
+	box-shadow: 3px 3px 8px rgba(0,0,0,0.5);
+	zoom: 1;
+}
+
+div#globalnav ul li#user_header .log_menu li a {
+	width: auto;
+	height: auto;
+	/*padding: 10px 30px 5px 40px;*/
+	/*padding: 5px 20px 0px 40px;*/
+	padding: 0px 10px 0px 20px;
+	/*background: url(../images/common/global_nav/global_nav_menu_arrow.png) 28px 12px no-repeat;*/
+	background: url(../images/common/global_nav/global_nav_menu_arrow.png) 10px no-repeat;
+	text-align: left;
+	text-indent: inherit;
+	text-decoration: underline;
+	font-size: 13px;
+	color: #fff;
+}
+div#globalnav ul li#user_header a {
+	display: block;
+	width: 120px;
+	text-align:center;
+	height: 23px;
+	line-height: 23px;
+	color:#FFF;
+	font-size: 12px;
+	text-indent: 0;
+	text-decoration: none;
+	padding-top: 5px;
+}
+#user_header.current a,
+#user_header.hover a,
+#user_header a:hover {
+	text-align:center;
+	background-color: #666;
+	color:#EEE;
+	font-size: 12px;
+	text-decoration: none;
+}
+div#globalnav ul li#user_header .log_menu li, div#globalnav ul li#user_header .log_menu li a {
+	/*width:140px;*/
+	/*padding:0;*/
+	text-decoration:underline;
+}
+div#globalnav ul li#user_header .log_menu {
+	width:140px;
+}
+div#globalnav ul li#user_header .log_menu li a:hover {
+	background-color: #444;
+}
+
+.menu_arrow{
+	background-image: url(../images/common/global_nav/global_nav_menu_arrow.png);
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	padding-left: 12px;
+}
+.menu_arrowd{
+	background-image: url(../images/common/global_nav/global_nav_menu_arrowd.png);
+	background-repeat: no-repeat;
+	background-position: 0 center;
+	padding-left: 12px;
+}
+.sub_menu li{
+	padding-left:10px!important;
+}
+
+.header-button{
+	visibility: hidden;
+}
